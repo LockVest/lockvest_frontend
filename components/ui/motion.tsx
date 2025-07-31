@@ -212,11 +212,13 @@ export function ConfettiEffect({
 export function SmoothScrollLink({ 
   children, 
   href, 
-  className = ""
+  className = "",
+  onClick
 }: {
   children: ReactNode
   href: string
   className?: string
+  onClick?: () => void
 }) {
   const scrollToSection = (e: React.MouseEvent) => {
     e.preventDefault()

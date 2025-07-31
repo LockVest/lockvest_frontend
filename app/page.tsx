@@ -3,7 +3,6 @@
 import { useState, useEffect } from "react"
 import Image from "next/image"
 import Link from "next/link"
-import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Card, CardContent } from "@/components/ui/card"
 import {
@@ -197,24 +196,23 @@ export default function LockVestLanding() {
             <div>
               <h3 className="text-2xl font-bold mb-4 text-[#FFFFFE]">Property Tokenization Process</h3>
               <p className="text-[#94A1B2] mb-6">
-                Transform real estate assets into digital tokens, enabling fractional ownership and global
-                accessibility.
+                Transform real estate assets into ERC-20 and ERC-721 tokens on Pharos blockchain, enabling fractional ownership and global accessibility.
               </p>
               <AnimatedTokenizationIllustration />
             </div>
             <div>
               <h3 className="text-2xl font-bold mb-4 text-[#FFFFFE]">Enterprise Security</h3>
               <p className="text-[#94A1B2] mb-6">
-                Multi-layered security architecture with audits, compliance, and insurance protection.
+                Multi-layered security architecture with Hacken audits, SPN-powered compliance, and insurance protection.
               </p>
               <SecurityShieldIllustration />
             </div>
           </div>
 
           <div className="text-center">
-            <h3 className="text-2xl font-bold mb-4 text-[#FFFFFE]">Powered by Blockchain Technology</h3>
+            <h3 className="text-2xl font-bold mb-4 text-[#FFFFFE]">Powered by Pharos Blockchain</h3>
             <p className="text-[#94A1B2] mb-8 max-w-2xl mx-auto">
-              Built on a robust decentralized network ensuring transparency, security, and global accessibility.
+              Built on Pharos's ultra-fast Layer-1 network (50,000 TPS) with SPN-powered compliance, ensuring transparency, security, and global accessibility.
             </p>
             <AnimatedBlockchainNetwork />
           </div>
@@ -278,12 +276,12 @@ export default function LockVestLanding() {
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
               {
-                title: "",
+                title: "Hacken Audits",
                 description: "Smart contracts audited by leading security firm",
               },
               {
                 title: "zk-Compliance",
-                description: "Privacy-preserving compliance via SPNs",
+                description: "Privacy-preserving compliance via Pharos SPNs",
               },
               {
                 title: "KYC Integration",
@@ -451,7 +449,7 @@ export default function LockVestLanding() {
                   LockVest
                 </span>
               </div>
-              <p className="text-[#94A1B2] text-sm">Tokenizing real estate for the future of property investment.</p>
+              <p className="text-[#94A1B2] text-sm">Tokenizing real estate on Pharos blockchain for the future of property investment.</p>
             </div>
 
             <div>
@@ -509,7 +507,7 @@ export default function LockVestLanding() {
             <div>
               <h4 className="text-[#FFFFFE] font-semibold mb-4">Community</h4>
               <div className="flex space-x-4">
-                <Link href="#" className="text-[#94A1B2] hover:text-[#FFFFFE] transition-colors">
+                <Link href="https://x.com/lockvest_" className="text-[#94A1B2] hover:text-[#FFFFFE] transition-colors">
                   <Twitter className="w-5 h-5" />
                 </Link>
                 <Link href="#" className="text-[#94A1B2] hover:text-[#FFFFFE] transition-colors">

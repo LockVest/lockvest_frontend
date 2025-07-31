@@ -85,6 +85,7 @@ export function EnhancedNavigation() {
                   key={item.href}
                   href={item.href}
                   className="text-[#94A1B2] hover:text-[#FFFFFE] transition-colors relative group"
+                  onClick={() => setIsMenuOpen(!isMenuOpen)}
                 >
                   <motion.span
                     initial={{ opacity: 0, y: -10 }}
@@ -195,7 +196,7 @@ export function EnhancedNavigation() {
                     <SmoothScrollLink
                       href={item.href}
                       className="block text-[#94A1B2] hover:text-[#FFFFFE] transition-colors"
-                      onClick={() => setIsMenuOpen(false)}
+                      onClick={() => setIsMenuOpen(!isMenuOpen)}
                     >
                       {item.label}
                     </SmoothScrollLink>

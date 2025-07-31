@@ -17,52 +17,52 @@ import { FadeInOnScroll, StaggeredContainer, StaggeredItem, MotionCard } from "@
 export function RoadmapSection() {
   const roadmapItems = [
     {
-      quarter: "Q2 2025",
-      title: "Smart Contract Architecture",
-      description: "ERC-20, ERC-721 token standards implementation with advanced security features",
+      quarter: "Late Aug 2025",
+      title: "Contract & Kickoff",
+      description: "Signed contracts, team onboarding, and LOIs finalized",
       icon: <Code className="w-6 h-6" />,
-      status: "completed",
-      features: ["ERC-20 Token Standard", "ERC-721 NFT Support", "Multi-Sig Security", "Audit Integration"]
+      status: "upcoming",
+      features: ["Team Onboarding", "LOIs Finalized", "Project Setup", "Pharos Integration"]
     },
     {
-      quarter: "Q2 2025", 
-      title: "Oracle Layer & zk-KYC Integration",
-      description: "Real-time property valuations and privacy-preserving identity verification",
+      quarter: "Sep 2025", 
+      title: "Architecture & PoC",
+      description: "Finalized design docs and PoC widget demonstrating token minting",
       icon: <Shield className="w-6 h-6" />,
-      status: "in-progress",
-      features: ["Chainlink Oracle Integration", "zk-KYC Implementation", "Privacy-Preserving Compliance", "Real-time Valuations"]
+      status: "upcoming",
+      features: ["Design Documentation", "PoC Widget", "Token Minting Demo", "2 LOIs Integration"]
     },
     {
-      quarter: "Q3 2025",
-      title: "Marketplace UI + dApp Release",
-      description: "Complete decentralized application with intuitive user interface (Testnet)",
+      quarter: "Oct 2025",
+      title: "Beta Contracts & UI",
+      description: "Deploy contracts on testnet with KYC flow and oracle integration",
       icon: <Globe className="w-6 h-6" />,
       status: "upcoming",
-      features: ["Intuitive UI/UX", "Mobile-First Design", "Wallet Integration", "Testnet Deployment"]
+      features: ["Testnet Deployment", "KYC Integration", "Oracle Feeds", "500 Test Wallets"]
     },
     {
-      quarter: "Q4 2025",
-      title: "Mainnet Launch + DAO Governance",
-      description: "Production deployment with community-driven governance structure",
+      quarter: "Nov 2025",
+      title: "Audited Mainnet Launch",
+      description: "Third-party audit completion and mainnet deployment",
       icon: <Rocket className="w-6 h-6" />,
       status: "upcoming",
-      features: ["Mainnet Deployment", "DAO Governance", "Community Voting", "Staking Mechanisms"]
+      features: ["Hacken Audit", "Mainnet Launch", "1,000+ Transactions", "Audit Report Published"]
     },
     {
-      quarter: "2026",
-      title: "Asset Class Expansion",
-      description: "Expansion to lands, rentals, and commercial properties across Africa",
+      quarter: "Dec 2025",
+      title: "UX/PMF Optimization",
+      description: "A/B testing, UI refinement, and partner app integration",
       icon: <Zap className="w-6 h-6" />,
       status: "upcoming",
-      features: ["Land Tokenization", "Rental Properties", "Commercial Real Estate", "Cross-Border Expansion"]
+      features: ["A/B Testing", "UI Refinement", "SmileID Integration", "5 Partner Apps"]
     },
     {
-      quarter: "2027",
-      title: "Global Community DAO",
-      description: "Worldwide onboarding with community-powered property listings and governance",
+      quarter: "Jan 2026",
+      title: "Growth & Metrics",
+      description: "TVL dashboard, community launch, and DAO voting bootstrapped",
       icon: <Users className="w-6 h-6" />,
       status: "upcoming",
-      features: ["Global Expansion", "Community DAO", "Decentralized Listings", "Cross-Chain Integration"]
+      features: ["TVL Dashboard", "Community Launch", "DAO Voting", "$200K+ TVL Target"]
     }
   ]
 
@@ -219,10 +219,10 @@ export function RoadmapSection() {
               whileHover={{ scale: 1.02 }}
               transition={{ type: "spring", stiffness: 300 }}
             >
-              <h3 className="text-2xl font-bold mb-4 text-[#FFFFFE]">Our Vision</h3>
-              <p className="text-lg text-[#94A1B2] leading-relaxed">
-                At LockVest, we envision a future where anyone, anywhere can own a piece of real-world property through trustless, transparent, and compliant blockchain infrastructure. Our goal is to democratize asset ownership — starting in Africa, expanding globally.
-              </p>
+                             <h3 className="text-2xl font-bold mb-4 text-[#FFFFFE]">Our Vision</h3>
+               <p className="text-lg text-[#94A1B2] leading-relaxed">
+                 At LockVest, we envision a future where anyone, anywhere can own a piece of real-world property through trustless, transparent, and compliant blockchain infrastructure. Our goal is to democratize asset ownership — starting in Nigeria, expanding globally. We're building on Pharos blockchain to unlock the $300 trillion global real estate market, making high-value assets accessible to everyday investors.
+               </p>
             </motion.div>
           </motion.div>
         </FadeInOnScroll>
