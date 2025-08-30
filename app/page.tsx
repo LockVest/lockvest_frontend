@@ -15,15 +15,15 @@ import {
   CheckCircle,
   ArrowRight,
   Menu,
-  X,
   Wallet,
   BarChart3,
   Users,
   Zap,
   Eye,
   Twitter,
-  MessageCircle,
   Send,
+  Linkedin,
+  Github,
 } from "lucide-react"
 
 import { AnimatedHeroIllustration } from "@/components/illustrations/animated-hero-illustration"
@@ -36,7 +36,7 @@ import { AnimatedUserFlow } from "@/components/illustrations/animated-user-flow"
 // Enhanced components
 import { EnhancedNavigation } from "@/components/ui/enhanced-navigation"
 import { EnhancedHero } from "@/components/ui/enhanced-hero"
-import { RoadmapSection } from "@/components/ui/roadmap-section"
+// import { RoadmapSection } from "@/components/ui/roadmap-section"
 import {
   MotionCard,
   MotionButton,
@@ -70,7 +70,7 @@ export default function LockVestLanding() {
                 Why <span className="text-[#7F5AF0]">LockVest</span>?
               </h2>
               <p className="text-[#94A1B2] text-lg max-w-2xl mx-auto">
-                Revolutionary real estate investment powered by blockchain technology
+                Democratizing access to real-world assets through embedded RWA marketplace widgets
               </p>
             </div>
           </FadeInOnScroll>
@@ -79,23 +79,23 @@ export default function LockVestLanding() {
             {[
               {
                 icon: <Coins className="w-8 h-8" />,
-                title: "Fractional Property Investment",
-                description: "Own a piece of high-value assets with minimal capital",
+                title: "Fractional Asset Ownership",
+                description: "Own pieces of high-value real estate and commodities with minimal capital",
               },
               {
                 icon: <Eye className="w-8 h-8" />,
                 title: "On-Chain Transparency",
-                description: "View ownership history & title verification on blockchain",
+                description: "View ownership history, title verification, and asset provenance on blockchain",
               },
               {
                 icon: <Shield className="w-8 h-8" />,
-                title: "Regulation Ready",
-                description: "Compliant with zk-proofs and KYC requirements",
+                title: "SPN-Powered Compliance",
+                description: "Regulatory compliance via Pharos SPNs with zero-knowledge proofs",
               },
               {
                 icon: <Globe className="w-8 h-8" />,
-                title: "Built for Africa",
-                description: "Global access with Nigeria-first approach",
+                title: "Global RWA Marketplace",
+                description: "Access to worldwide real estate and commodity investments",
               },
             ].map((benefit, index) => (
               <StaggeredItem key={index}>
@@ -128,7 +128,7 @@ export default function LockVestLanding() {
             <div className="text-center mb-16">
               <h2 className="text-3xl sm:text-4xl font-bold mb-4">Key Features</h2>
               <p className="text-[#94A1B2] text-lg max-w-2xl mx-auto">
-                Advanced technology stack for seamless real estate tokenization
+                Advanced technology stack for seamless RWA tokenization and marketplace operations
               </p>
             </div>
           </FadeInOnScroll>
@@ -138,32 +138,32 @@ export default function LockVestLanding() {
               {
                 icon: <Lock className="w-6 h-6" />,
                 title: "Non-Custodial Trading",
-                description: "Full control of your assets with decentralized trading",
+                description: "Full control of your assets with decentralized smart contract trading",
               },
               {
                 icon: <BarChart3 className="w-6 h-6" />,
-                title: "Live Oracle Feeds",
-                description: "Real-time property valuations via Chainlink oracles",
+                title: "Chainlink Oracle Integration",
+                description: "Real-time asset valuations, title status, and compliance checks",
               },
               {
                 icon: <Zap className="w-6 h-6" />,
-                title: "Embeddable Widgets",
-                description: "Integrate LockVest into any platform seamlessly",
+                title: "Embeddable RWA Widgets",
+                description: "Integrate LockVest marketplace into any platform or website",
               },
               {
                 icon: <Coins className="w-6 h-6" />,
-                title: "ERC-20 + ERC-721 Support",
-                description: "Dual token standard for maximum flexibility",
+                title: "Multi-Asset Token Support",
+                description: "ERC-20 fractional shares, ERC-721 titles, and commodity tokens",
               },
               {
                 icon: <TrendingUp className="w-6 h-6" />,
                 title: "LVT Utility Token",
-                description: "Staking, voting, and platform discounts",
+                description: "Staking rewards, DAO governance, and platform fee discounts",
               },
               {
                 icon: <Smartphone className="w-6 h-6" />,
-                title: "Seamless UX",
-                description: "Mobile-first design with multilingual support",
+                title: "50K TPS Performance",
+                description: "Ultra-fast transactions powered by Pharos blockchain architecture",
               },
             ].map((feature, index) => (
               <StaggeredItem key={index}>
@@ -192,7 +192,7 @@ export default function LockVestLanding() {
       {/* Technology Showcase Section */}
       <section className="py-20 px-4 sm:px-6 lg:px-8 bg-[#0E0E10]">
         <div className="max-w-7xl mx-auto">
-          <div className="grid lg:grid-cols-2 gap-12 items-center mb-16">
+          <div className="grid lg:grid-cols-2 gap-12 mb-16">
             <div>
               <h3 className="text-2xl font-bold mb-4 text-[#FFFFFE]">Property Tokenization Process</h3>
               <p className="text-[#94A1B2] mb-6">
@@ -203,7 +203,7 @@ export default function LockVestLanding() {
             <div>
               <h3 className="text-2xl font-bold mb-4 text-[#FFFFFE]">Enterprise Security</h3>
               <p className="text-[#94A1B2] mb-6">
-                Multi-layered security architecture with Hacken audits, SPN-powered compliance, and insurance protection.
+                Multi-layered security architecture with SPN-powered compliance, live oracle verification, and KYC integration.
               </p>
               <SecurityShieldIllustration />
             </div>
@@ -225,26 +225,26 @@ export default function LockVestLanding() {
           <div className="text-center mb-16">
             <h2 className="text-3xl sm:text-4xl font-bold mb-4">How It Works</h2>
             <p className="text-[#94A1B2] text-lg max-w-2xl mx-auto">
-              Three simple steps to start your real estate investment journey
+              Three simple steps to start your RWA investment journey
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8 mb-12">
+          <div className="grid md:grid-cols-3 gap-8 mb-12 justify-center items-center">
             {[
               {
                 step: "01",
-                title: "Browse Verified Assets",
-                description: "Explore our curated selection of tokenized real estate properties",
+                title: "Browse RWA Assets",
+                description: "Explore verified real estate, commodities, and infrastructure investments",
               },
               {
                 step: "02",
-                title: "Connect Wallet & Invest",
-                description: "Securely connect your wallet and purchase property tokens",
+                title: "Connect & Invest",
+                description: "Securely connect your wallet and purchase fractional shares of high-value assets",
               },
               {
                 step: "03",
-                title: "Earn Rewards, Vote in DAO",
-                description: "Receive rental income and participate in governance decisions",
+                title: "Trade & Earn",
+                description: "Buy, sell, and earn from your RWA portfolio with transparent on-chain records",
               },
             ].map((step, index) => (
               <div key={index} className="text-center group">
@@ -269,27 +269,27 @@ export default function LockVestLanding() {
           <div className="text-center mb-16">
             <h2 className="text-3xl sm:text-4xl font-bold mb-4">Built for Trust</h2>
             <p className="text-[#94A1B2] text-lg max-w-2xl mx-auto">
-              Enterprise-grade security and regulatory compliance
+              Multi-layered security with SPN-powered compliance and real-time verification
             </p>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
               {
-                title: "Hacken Audits",
-                description: "Smart contracts audited by leading security firm",
+                title: "SPN-Powered ZK",
+                description: "Zero-knowledge compliance proofs via Pharos Specialized Processing Nodes",
               },
               {
-                title: "zk-Compliance",
-                description: "Privacy-preserving compliance via Pharos SPNs",
+                title: "Live Oracle Data",
+                description: "Real-time asset valuations and compliance checks via Chainlink integration",
               },
               {
                 title: "KYC Integration",
-                description: "Verified with Blockpass & SmileID",
+                description: "Built-in identity verification with Blockpass & Sumsub compliance",
               },
               {
-                title: "Bug Bounty Program",
-                description: "Community-driven security with insurance fund",
+                title: "Audited & Secure",
+                description: "Third-party audited smart contracts with continuous security monitoring",
               },
             ].map((item, index) => (
               <Card
@@ -313,7 +313,7 @@ export default function LockVestLanding() {
           <div className="text-center mb-16">
             <h2 className="text-3xl sm:text-4xl font-bold mb-4">The Opportunity</h2>
             <p className="text-[#94A1B2] text-lg max-w-2xl mx-auto">
-              Massive market potential in real estate tokenization
+              Massive market potential in global RWA tokenization
             </p>
           </div>
 
@@ -322,7 +322,7 @@ export default function LockVestLanding() {
               {[
                 {
                   stat: "$300T",
-                  label: "Global Real Estate Market",
+                  label: "Global Asset Market",
                   description: "Total addressable market size",
                 },
                 {
@@ -331,14 +331,14 @@ export default function LockVestLanding() {
                   description: "Opportunity for tokenization",
                 },
                 {
-                  stat: "2nd",
-                  label: "Global Crypto Adoption: Nigeria",
-                  description: "Leading emerging market",
+                  stat: "$230B",
+                  label: "Current RWA Market",
+                  description: "Already growing rapidly",
                 },
                 {
-                  stat: "55%",
-                  label: "Unbanked Population",
-                  description: "High demand for DeFi solutions",
+                  stat: "50K",
+                  label: "TPS Performance",
+                  description: "Pharos blockchain capability",
                 },
               ].map((item, index) => (
                 <div key={index} className="flex items-center space-x-4">
@@ -359,7 +359,7 @@ export default function LockVestLanding() {
       </section>
 
       {/* Roadmap & Future Vision Section */}
-      <RoadmapSection />
+      {/* <RoadmapSection /> */}
 
       {/* Final CTA Section */}
       <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-[#7F5AF0]/10 to-[#2CB67D]/10">
@@ -372,7 +372,7 @@ export default function LockVestLanding() {
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
             >
-              Join the Future of Real Estate
+              Join the Future of RWA Investment
             </motion.h2>
             <motion.p
               className="text-[#94A1B2] text-lg mb-8 max-w-2xl mx-auto"
@@ -381,7 +381,7 @@ export default function LockVestLanding() {
               transition={{ duration: 0.8, delay: 0.2 }}
               viewport={{ once: true }}
             >
-              Start your journey with LockVest and own real property from anywhere, on-chain.
+              Start your journey with LockVest and own real-world assets from anywhere, on-chain.
             </motion.p>
           </FadeInOnScroll>
 
@@ -449,7 +449,7 @@ export default function LockVestLanding() {
                   LockVest
                 </span>
               </div>
-              <p className="text-[#94A1B2] text-sm">Tokenizing real estate on Pharos blockchain for the future of property investment.</p>
+              <p className="text-[#94A1B2] text-sm">Tokenizing real-world assets on Pharos blockchain for the future of global investment.</p>
             </div>
 
             <div>
@@ -486,11 +486,7 @@ export default function LockVestLanding() {
                     About
                   </Link>
                 </li>
-                <li>
-                  <Link href="#" className="hover:text-[#FFFFFE] transition-colors">
-                    Roadmap
-                  </Link>
-                </li>
+                
                 <li>
                   <Link href="#" className="hover:text-[#FFFFFE] transition-colors">
                     Careers
@@ -507,14 +503,17 @@ export default function LockVestLanding() {
             <div>
               <h4 className="text-[#FFFFFE] font-semibold mb-4">Community</h4>
               <div className="flex space-x-4">
-                <Link href="https://x.com/lockvest_" className="text-[#94A1B2] hover:text-[#FFFFFE] transition-colors">
+                <Link target="_blank" href="https://x.com/lockvest_" className="text-[#94A1B2] hover:text-[#FFFFFE] transition-colors">
                   <Twitter className="w-5 h-5" />
                 </Link>
-                <Link href="#" className="text-[#94A1B2] hover:text-[#FFFFFE] transition-colors">
-                  <MessageCircle className="w-5 h-5" />
+                <Link target="_blank" href="https://github.com/LockVest" className="text-[#94A1B2] hover:text-[#FFFFFE] transition-colors">
+                  <Github className="w-5 h-5" />
                 </Link>
-                <Link href="#" className="text-[#94A1B2] hover:text-[#FFFFFE] transition-colors">
+                <Link target="_blank" href="https://t.me/+WnFmCoFzugI1ZGJk" className="text-[#94A1B2] hover:text-[#FFFFFE] transition-colors">
                   <Send className="w-5 h-5" />
+                </Link>
+                <Link target="_blank" href="https://www.linkedin.com/in/lockvest" className="text-[#94A1B2] hover:text-[#FFFFFE] transition-colors">
+                  <Linkedin className="w-5 h-5" />
                 </Link>
               </div>
             </div>

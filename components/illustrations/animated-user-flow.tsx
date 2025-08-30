@@ -1,9 +1,389 @@
+// "use client"
+
+// import { useEffect, useState } from "react"
+
+// export function AnimatedUserFlow() {
+//   const [isVisible, setIsVisible] = useState(false)
+
+//   useEffect(() => {
+//     const observer = new IntersectionObserver(
+//       ([entry]) => {
+//         if (entry.isIntersecting) {
+//           setIsVisible(true)
+//         }
+//       },
+//       { threshold: 0.2 },
+//     )
+
+//     const element = document.getElementById("user-flow")
+//     if (element) observer.observe(element)
+
+//     return () => observer.disconnect()
+//   }, [])
+
+//   return (
+//     <div id="user-flow" className="w-full h-auto">
+//       <svg
+//         width="800"
+//         height="400"
+//         viewBox="0 0 800 400"
+//         fill="none"
+//         xmlns="http://www.w3.org/2000/svg"
+//         className="w-full h-auto"
+//       >
+//         <defs>
+//           <linearGradient id="stepGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+//             <stop offset="0%" stopColor="#7F5AF0" />
+//             <stop offset="100%" stopColor="#2CB67D" />
+//           </linearGradient>
+//           <linearGradient id="widgetGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+//             <stop offset="0%" stopColor="#2CB67D" />
+//             <stop offset="100%" stopColor="#7F5AF0" />
+//           </linearGradient>
+//           <linearGradient id="platformGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+//             <stop offset="0%" stopColor="#8B5CF6" />
+//             <stop offset="100%" stopColor="#2CB67D" />
+//           </linearGradient>
+//           <filter id="screenGlow">
+//             <feGaussianBlur stdDeviation="3" result="coloredBlur" />
+//             <feMerge>
+//               <feMergeNode in="coloredBlur" />
+//               <feMergeNode in="SourceGraphic" />
+//             </feMerge>
+//           </filter>
+//         </defs>
+
+//         {/* Step 1: Browse RWA Assets */}
+//         <g transform="translate(50, 80)" className={`transition-all duration-1000 ${isVisible ? "opacity-100" : "opacity-0"}`} style={{ animationDelay: "0.2s" }}>
+//           {/* Asset Browser */}
+//           <rect
+//             width="120"
+//             height="160"
+//             fill="url(#platformGradient)"
+//             rx="8"
+//             opacity="0.9"
+//           />
+          
+//           {/* Asset categories */}
+//           <rect x="15" y="20" width="90" height="20" fill="#FFFFFE" opacity="0.8" rx="2" />
+//           <text x="60" y="33" textAnchor="middle" fill="#7F5AF0" fontSize="10" fontWeight="bold">Real Estate</text>
+          
+//           <rect x="15" y="50" width="90" height="20" fill="#FFFFFE" opacity="0.8" rx="2" />
+//           <text x="60" y="63" textAnchor="middle" fill="#2CB67D" fontSize="10" fontWeight="bold">Commodities</text>
+          
+//           <rect x="15" y="80" width="90" height="20" fill="#FFFFFE" opacity="0.8" rx="2" />
+//           <text x="60" y="93" textAnchor="middle" fill="#8B5CF6" fontSize="10" fontWeight="bold">Infrastructure</text>
+          
+//           {/* Search icon */}
+//           <rect x="15" y="110" width="90" height="40" fill="url(#widgetGradient)" rx="4" />
+//           <text x="60" y="130" textAnchor="middle" fill="white" fontSize="10" fontWeight="bold">Search</text>
+//           <text x="60" y="145" textAnchor="middle" fill="white" fontSize="8" opacity="0.9">Assets</text>
+//         </g>
+
+//         {/* Step 1 Label */}
+//         <text
+//           x="110"
+//           y="270"
+//           textAnchor="middle"
+//           fill="#7F5AF0"
+//           fontSize="14"
+//           fontWeight="bold"
+//           className={`transition-all duration-1000 ${isVisible ? "opacity-100" : "opacity-0"}`}
+//           style={{ animationDelay: "0.4s" }}
+//         >
+//           Browse RWA Assets
+//         </text>
+
+//         {/* Arrow 1: Integration to Marketplace */}
+//         <g className={`transition-all duration-1000 ${isVisible ? "opacity-100" : "opacity-0"}`} style={{ animationDelay: "0.6s" }}>
+//           <line
+//             x1="190"
+//             y1="160"
+//             x2="250"
+//             y2="160"
+//             stroke="url(#stepGradient)"
+//             strokeWidth="3"
+//             strokeDasharray="5,5"
+//             className="animate-pulse"
+//           />
+//           <polygon
+//             points="250,160 245,155 245,165"
+//             fill="url(#stepGradient)"
+//               />
+//             </g>
+
+//         {/* Step 2: Connect & Invest */}
+//         <g transform="translate(270, 60)" className={`transition-all duration-1000 ${isVisible ? "opacity-100" : "opacity-0"}`} style={{ animationDelay: "0.8s" }}>
+//           {/* Wallet Connection */}
+//           <rect
+//             width="140"
+//             height="200"
+//             fill="url(#stepGradient)"
+//             rx="8"
+//             opacity="0.9"
+//           />
+          
+//           {/* Wallet Icon */}
+//           <rect x="50" y="20" width="40" height="40" fill="#FFFFFE" opacity="0.9" rx="20" />
+//           <text
+//             x="70"
+//             y="45"
+//             textAnchor="middle"
+//             fill="#7F5AF0"
+//             fontSize="12"
+//             fontWeight="bold"
+//           >
+//             Wallet
+//           </text>
+          
+//           {/* Connection Status */}
+//           <rect x="15" y="80" width="110" height="25" fill="#2CB67D" opacity="0.8" rx="3" />
+//           <text
+//             x="70"
+//             y="97"
+//             textAnchor="middle"
+//             fill="white"
+//             fontSize="10"
+//             fontWeight="bold"
+//           >
+//             Connected
+//           </text>
+          
+//           {/* Investment Options */}
+//           <rect x="15" y="115" width="110" height="20" fill="#FFFFFE" opacity="0.8" rx="3" />
+//           <text
+//             x="70"
+//             y="128"
+//             textAnchor="middle"
+//             fill="#7F5AF0"
+//             fontSize="9"
+//             fontWeight="600"
+//           >
+//             Buy Shares
+//           </text>
+          
+//           <rect x="15" y="145" width="110" height="20" fill="#FFFFFE" opacity="0.8" rx="3" />
+//           <text
+//             x="70"
+//             y="158"
+//             textAnchor="middle"
+//             fill="#2CB67D"
+//             fontSize="9"
+//             fontWeight="600"
+//           >
+//             Invest Now
+//           </text>
+//         </g>
+
+//         {/* Step 2 Label */}
+//         <text
+//           x="340"
+//           y="280"
+//           textAnchor="middle"
+//           fill="#2CB67D"
+//           fontSize="14"
+//           fontWeight="bold"
+//           className={`transition-all duration-1000 ${isVisible ? "opacity-100" : "opacity-0"}`}
+//           style={{ animationDelay: "1.0s" }}
+//         >
+//           Connect & Invest
+//         </text>
+
+//         {/* Arrow 2: Marketplace to Settlement */}
+//         <g className={`transition-all duration-1000 ${isVisible ? "opacity-100" : "opacity-0"}`} style={{ animationDelay: "1.2s" }}>
+//           <line
+//             x1="430"
+//             y1="160"
+//             x2="490"
+//             y2="160"
+//             stroke="url(#stepGradient)"
+//             strokeWidth="3"
+//             strokeDasharray="5,5"
+//             className="animate-pulse"
+//           />
+//           <polygon
+//             points="490,160 485,155 485,165"
+//             fill="url(#stepGradient)"
+//           />
+//         </g>
+
+//         {/* Step 3: Trade & Earn */}
+//         <g transform="translate(510, 80)" className={`transition-all duration-1000 ${isVisible ? "opacity-100" : "opacity-0"}`} style={{ animationDelay: "1.4s" }}>
+//           {/* Portfolio Dashboard */}
+//           <rect
+//             width="120"
+//             height="160"
+//             fill="url(#widgetGradient)"
+//             rx="8"
+//             opacity="0.9"
+//           />
+          
+//           {/* Portfolio Icon */}
+//           <rect x="45" y="20" width="30" height="30" fill="#FFFFFE" opacity="0.9" rx="4" />
+//           <text
+//             x="60"
+//             y="40"
+//             textAnchor="middle"
+//             fill="#2CB67D"
+//             fontSize="12"
+//             fontWeight="bold"
+//           >
+//             Portfolio
+//           </text>
+
+//           {/* Trading Actions */}
+//           <rect x="20" y="70" width="80" height="15" fill="#FFFFFE" opacity="0.8" rx="2" />
+//           <text
+//             x="60"
+//             y="81"
+//             textAnchor="middle"
+//             fill="#7F5AF0"
+//             fontSize="8"
+//             fontWeight="600"
+//           >
+//             Buy/Sell
+//           </text>
+
+//           <rect x="20" y="95" width="80" height="15" fill="#FFFFFE" opacity="0.8" rx="2" />
+//           <text
+//             x="60"
+//             y="106"
+//             textAnchor="middle"
+//             fill="#2CB67D"
+//             fontSize="8"
+//             fontWeight="600"
+//           >
+//             Track Value
+//           </text>
+
+//           {/* Earnings */}
+//           <rect x="20" y="120" width="80" height="20" fill="url(#stepGradient)" rx="3" />
+//           <text
+//             x="60"
+//             y="133"
+//             textAnchor="middle"
+//             fill="white"
+//             fontSize="9"
+//             fontWeight="bold"
+//           >
+//             Earn Rewards
+//           </text>
+//         </g>
+
+//         {/* Step 3 Label */}
+//         <text
+//           x="570"
+//           y="270"
+//           textAnchor="middle"
+//             fill="#7F5AF0"
+//           fontSize="14"
+//           fontWeight="bold"
+//           className={`transition-all duration-1000 ${isVisible ? "opacity-100" : "opacity-0"}`}
+//           style={{ animationDelay: "1.6s" }}
+//         >
+//           Trade & Earn
+//         </text>
+
+//         {/* Data Flow Indicators */}
+//         <g className={`transition-all duration-1000 ${isVisible ? "opacity-100" : "opacity-0"}`} style={{ animationDelay: "1.8s" }}>
+//           {/* Oracle Data Flow */}
+//           <line
+//             x1="340"
+//             y1="100"
+//             x2="340"
+//             y2="60"
+//             stroke="#2CB67D"
+//             strokeWidth="2"
+//             strokeDasharray="3,3"
+//             className="animate-pulse"
+//           />
+//           <text
+//             x="360"
+//             y="70"
+//             fill="#2CB67D"
+//             fontSize="10"
+//             fontWeight="600"
+//           >
+//             Chainlink Oracles
+//           </text>
+
+//           {/* SPN Compliance */}
+//           <line
+//             x1="340"
+//             y1="220"
+//             x2="340"
+//             y2="260"
+//             stroke="#7F5AF0"
+//             strokeWidth="2"
+//             strokeDasharray="3,3"
+//             className="animate-pulse"
+//                 />
+//                 <text
+//             x="360"
+//             y="250"
+//             fill="#7F5AF0"
+//             fontSize="10"
+//             fontWeight="600"
+//           >
+//             SPN Compliance
+//                 </text>
+//               </g>
+
+//         {/* Floating Integration Elements */}
+//         <g className={`transition-all duration-1000 ${isVisible ? "opacity-100" : "opacity-0"}`}>
+//           {[...Array(8)].map((_, i) => (
+//             <circle
+//               key={i}
+//               cx={200 + Math.random() * 400}
+//               cy={100 + Math.random() * 200}
+//               r={1.5 + Math.random() * 2}
+//               fill={i % 3 === 0 ? "#7F5AF0" : i % 3 === 1 ? "#2CB67D" : "#8B5CF6"}
+//               opacity="0.6"
+//               className="animate-pulse"
+//               style={{
+//                 animationDelay: `${2.0 + Math.random() * 2}s`,
+//                 animationDuration: `${1.5 + Math.random() * 2}s`
+//               }}
+//             />
+//             ))}
+//           </g>
+
+//         {/* Process Flow Labels */}
+//         <g className={`transition-all duration-1000 ${isVisible ? "opacity-100" : "opacity-0"}`} style={{ animationDelay: "2.2s" }}>
+//           <text
+//             x="400"
+//             y="350"
+//             textAnchor="middle"
+//             fill="#FFFFFE"
+//             fontSize="16"
+//             fontWeight="bold"
+//           >
+//             Simple RWA Investment Journey
+//           </text>
+//           <text
+//             x="400"
+//             y="370"
+//             textAnchor="middle"
+//             fill="#94A1B2"
+//             fontSize="12"
+//             opacity="0.8"
+//           >
+//             Browse Assets • Connect Wallet • Trade & Earn
+//           </text>
+//         </g>
+//       </svg>
+//     </div>
+//   )
+// }
+
+
 "use client"
 
 import { useEffect, useState } from "react"
 
 export function AnimatedUserFlow() {
   const [isVisible, setIsVisible] = useState(false)
+  const [activeStep, setActiveStep] = useState(0)
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -12,7 +392,7 @@ export function AnimatedUserFlow() {
           setIsVisible(true)
         }
       },
-      { threshold: 0.2 },
+      { threshold: 0.2 }
     )
 
     const element = document.getElementById("user-flow")
@@ -21,777 +401,493 @@ export function AnimatedUserFlow() {
     return () => observer.disconnect()
   }, [])
 
+  useEffect(() => {
+    if (!isVisible) return
+
+    const stepInterval = setInterval(() => {
+      setActiveStep(prev => (prev + 1) % 3)
+    }, 3000)
+
+    return () => clearInterval(stepInterval)
+  }, [isVisible])
+
+  const steps = [
+    { title: "Browse RWA Assets", color: "#7F5AF0", delay: "0.2s" },
+    { title: "Connect & Invest", color: "#2CB67D", delay: "0.8s" },
+    { title: "Trade & Earn", color: "#8B5CF6", delay: "1.4s" }
+  ]
+
   return (
-    <div id="user-flow" className="w-full h-auto">
+    <div id="user-flow" className="w-full hidden h-auto bg-gradient-to-br from-gray-900 via-purple-900 to-gray-900 p-8 rounded-2xl">
       <svg
-        width="800"
-        height="300"
-        viewBox="0 0 800 300"
+        width="900"
+        height="500"
+        viewBox="0 0 900 500"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
         className="w-full h-auto"
       >
         <defs>
-          <linearGradient id="stepGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+          {/* Enhanced Gradients */}
+          <linearGradient id="primaryGradient" x1="0%" y1="0%" x2="100%" y2="100%">
             <stop offset="0%" stopColor="#7F5AF0" />
-            <stop offset="100%" stopColor="#2CB67D" />
+            <stop offset="50%" stopColor="#2CB67D" />
+            <stop offset="100%" stopColor="#8B5CF6" />
           </linearGradient>
-          <linearGradient id="deviceGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor="#2CB67D" />
-            <stop offset="100%" stopColor="#7F5AF0" />
+          
+          <linearGradient id="cardGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stopColor="rgba(255,255,255,0.1)" />
+            <stop offset="100%" stopColor="rgba(255,255,255,0.05)" />
           </linearGradient>
-          <filter id="screenGlow">
-            <feGaussianBlur stdDeviation="2" result="coloredBlur" />
-            <feMerge>
-              <feMergeNode in="coloredBlur" />
-              <feMergeNode in="SourceGraphic" />
+
+          <linearGradient id="glowGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stopColor="#7F5AF0" stopOpacity="0.8" />
+            <stop offset="100%" stopColor="#2CB67D" stopOpacity="0.8" />
+          </linearGradient>
+
+          {/* Enhanced Filters */}
+          <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+            <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
+            <feMerge> 
+              <feMergeNode in="coloredBlur"/>
+              <feMergeNode in="SourceGraphic"/> 
             </feMerge>
           </filter>
+
+          <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+            <feDropShadow dx="0" dy="4" stdDeviation="8" floodColor="rgba(0,0,0,0.3)"/>
+          </filter>
+
+          {/* Animated Patterns */}
+          <pattern id="dots" patternUnits="userSpaceOnUse" width="20" height="20">
+            <circle cx="10" cy="10" r="1" fill="rgba(255,255,255,0.1)">
+              <animate attributeName="opacity" values="0.1;0.3;0.1" dur="3s" repeatCount="indefinite"/>
+            </circle>
+          </pattern>
         </defs>
 
-        {/* Step 1: Browse Assets */}
-        <g transform="translate(50, 50)">
-          {/* Phone/Device with animation */}
-          <rect
-            width="80"
-            height="140"
-            fill="url(#deviceGradient)"
-            rx="12"
-            className={`transition-all duration-1000 ${isVisible ? "animate-device-appear" : "scale-0 opacity-0"}`}
-          />
-          <rect
-            x="10"
-            y="20"
-            width="60"
-            height="100"
-            fill="#16161A"
-            rx="4"
-            className={`transition-all duration-800 delay-300 ${isVisible ? "animate-screen-glow" : "opacity-0"}`}
-            filter="url(#screenGlow)"
-          />
+        {/* Background Pattern */}
+        <rect width="900" height="500" fill="url(#dots)" opacity="0.3"/>
 
-          {/* Property cards with staggered animation */}
+        {/* Connecting Path */}
+        <path
+          d="M 150 250 Q 300 150 450 250 Q 600 350 750 250"
+          stroke="url(#primaryGradient)"
+          strokeWidth="3"
+          fill="none"
+          strokeDasharray="10,5"
+          opacity={isVisible ? "0.6" : "0"}
+          className="transition-all duration-2000"
+        >
+          <animate
+            attributeName="stroke-dashoffset"
+            values="0;-15;0"
+            dur="3s"
+            repeatCount="indefinite"
+          />
+        </path>
+
+        {/* Step 1: Browse RWA Assets */}
+        <g transform="translate(50, 150)">
+          <rect
+            width="140"
+            height="180"
+            fill="url(#cardGradient)"
+            stroke="url(#primaryGradient)"
+            strokeWidth="2"
+            rx="16"
+            filter="url(#shadow)"
+            opacity={isVisible ? "1" : "0"}
+            className="transition-all duration-1000"
+            style={{ 
+              animationDelay: steps[0].delay,
+              transform: activeStep === 0 ? 'scale(1.05)' : 'scale(1)',
+              filter: activeStep === 0 ? 'url(#glow)' : 'url(#shadow)'
+            }}
+          />
+          
+          {/* Asset Categories */}
           {[
-            { y: 25, color: "#7F5AF0", delay: "1s" },
-            { y: 50, color: "#2CB67D", delay: "1.3s" },
-            { y: 75, color: "#7F5AF0", delay: "1.6s" },
-          ].map((card, index) => (
-            <g key={index}>
-              <rect
-                x="15"
-                y={card.y}
-                width="50"
-                height="20"
-                fill={card.color}
-                rx="2"
-                className="animate-card-slide"
-                style={{ animationDelay: card.delay }}
+            { label: "Real Estate", color: "#7F5AF0", y: 30 },
+            { label: "Commodities", color: "#2CB67D", y: 60 },
+            { label: "Infrastructure", color: "#8B5CF6", y: 90 }
+          ].map((asset, i) => (
+            <g key={asset.label}>
+              <rect 
+                x="20" 
+                y={asset.y} 
+                width="100" 
+                height="24" 
+                fill="rgba(255,255,255,0.1)" 
+                rx="4"
+                opacity={isVisible ? "1" : "0"}
+                className="transition-all duration-500"
+                style={{ animationDelay: `${0.4 + i * 0.2}s` }}
               />
-              <rect
-                x="20"
-                y={card.y + 3}
-                width="15"
-                height="8"
-                fill="#FFFFFE"
-                opacity="0.8"
-                className="animate-card-content"
-                style={{ animationDelay: `${Number.parseFloat(card.delay.replace("s", "")) + 0.2}s` }}
+              <text 
+                x="70" 
+                y={asset.y + 16} 
+                textAnchor="middle" 
+                fill={asset.color} 
+                fontSize="11" 
+                fontWeight="600"
+                opacity={isVisible ? "1" : "0"}
+                className="transition-all duration-500"
+                style={{ animationDelay: `${0.6 + i * 0.2}s` }}
+              >
+                {asset.label}
+              </text>
+            </g>
+          ))}
+          
+          {/* Search Button */}
+          <rect 
+            x="20" 
+            y="130" 
+            width="100" 
+            height="35" 
+            fill="url(#primaryGradient)" 
+            rx="8"
+            opacity={isVisible ? "1" : "0"}
+            className="transition-all duration-500 cursor-pointer hover:opacity-90"
+            style={{ animationDelay: "1.0s" }}
+          />
+          <text 
+            x="70" 
+            y="152" 
+            textAnchor="middle" 
+            fill="white" 
+            fontSize="12" 
+            fontWeight="bold"
+            opacity={isVisible ? "1" : "0"}
+            className="transition-all duration-500"
+            style={{ animationDelay: "1.2s" }}
+          >
+            Explore Assets
+          </text>
+        </g>
+
+        {/* Flow Arrow 1 */}
+        <g opacity={isVisible ? "1" : "0"} className="transition-all duration-1000" style={{ animationDelay: "1.4s" }}>
+          <line
+            x1="210"
+            y1="240"
+            x2="280"
+            y2="240"
+            stroke="url(#primaryGradient)"
+            strokeWidth="3"
+            markerEnd="url(#arrowhead)"
+          />
+          <circle cx="245" cy="240" r="3" fill="#2CB67D">
+            <animate attributeName="r" values="3;6;3" dur="2s" repeatCount="indefinite"/>
+          </circle>
+        </g>
+
+        {/* Step 2: Connect & Invest */}
+        <g transform="translate(300, 140)">
+          <rect
+            width="160"
+            height="200"
+            fill="url(#cardGradient)"
+            stroke="url(#primaryGradient)"
+            strokeWidth="2"
+            rx="16"
+            filter="url(#shadow)"
+            opacity={isVisible ? "1" : "0"}
+            className="transition-all duration-1000"
+            style={{ 
+              animationDelay: steps[1].delay,
+              transform: activeStep === 1 ? 'scale(1.05)' : 'scale(1)',
+              filter: activeStep === 1 ? 'url(#glow)' : 'url(#shadow)'
+            }}
+          />
+          
+          {/* Wallet Icon */}
+          <circle 
+            cx="80" 
+            cy="50" 
+            r="25" 
+            fill="url(#primaryGradient)"
+            opacity={isVisible ? "1" : "0"}
+            className="transition-all duration-500"
+            style={{ animationDelay: "1.0s" }}
+          />
+          <text 
+            x="80" 
+            y="57" 
+            textAnchor="middle" 
+            fill="white" 
+            fontSize="14" 
+            fontWeight="bold"
+          >
+            💼
+          </text>
+          
+          {/* Connection Status */}
+          <rect 
+            x="20" 
+            y="90" 
+            width="120" 
+            height="28" 
+            fill="#2CB67D" 
+            rx="14"
+            opacity={isVisible ? "0.9" : "0"}
+            className="transition-all duration-500"
+            style={{ animationDelay: "1.2s" }}
+          />
+          <text 
+            x="80" 
+            y="108" 
+            textAnchor="middle" 
+            fill="white" 
+            fontSize="12" 
+            fontWeight="bold"
+          >
+            ✓ Connected
+          </text>
+          
+          {/* Investment Actions */}
+          {[
+            { label: "Buy Shares", y: 135 },
+            { label: "Invest Now", y: 165 }
+          ].map((action, i) => (
+            <rect 
+              key={action.label}
+              x="20" 
+              y={action.y} 
+              width="120" 
+              height="22" 
+              fill="rgba(255,255,255,0.1)" 
+              rx="4"
+              opacity={isVisible ? "1" : "0"}
+              className="transition-all duration-500 cursor-pointer hover:fill-opacity-20"
+              style={{ animationDelay: `${1.4 + i * 0.2}s` }}
+            />
+          ))}
+          
+          <text x="80" y="149" textAnchor="middle" fill="#7F5AF0" fontSize="10" fontWeight="600">
+            Buy Shares
+          </text>
+          <text x="80" y="179" textAnchor="middle" fill="#2CB67D" fontSize="10" fontWeight="600">
+            Invest Now
+          </text>
+        </g>
+
+        {/* Flow Arrow 2 */}
+        <g opacity={isVisible ? "1" : "0"} className="transition-all duration-1000" style={{ animationDelay: "1.8s" }}>
+          <line
+            x1="480"
+            y1="240"
+            x2="550"
+            y2="240"
+            stroke="url(#primaryGradient)"
+            strokeWidth="3"
+            markerEnd="url(#arrowhead)"
+          />
+          <circle cx="515" cy="240" r="3" fill="#8B5CF6">
+            <animate attributeName="r" values="3;6;3" dur="2s" repeatCount="indefinite" begin="0.5s"/>
+          </circle>
+        </g>
+
+        {/* Step 3: Trade & Earn */}
+        <g transform="translate(570, 150)">
+          <rect
+            width="140"
+            height="180"
+            fill="url(#cardGradient)"
+            stroke="url(#primaryGradient)"
+            strokeWidth="2"
+            rx="16"
+            filter="url(#shadow)"
+            opacity={isVisible ? "1" : "0"}
+            className="transition-all duration-1000"
+            style={{ 
+              animationDelay: steps[2].delay,
+              transform: activeStep === 2 ? 'scale(1.05)' : 'scale(1)',
+              filter: activeStep === 2 ? 'url(#glow)' : 'url(#shadow)'
+            }}
+          />
+          
+          {/* Portfolio Icon */}
+          <rect 
+            x="50" 
+            y="25" 
+            width="40" 
+            height="35" 
+            fill="url(#primaryGradient)" 
+            rx="8"
+            opacity={isVisible ? "1" : "0"}
+            className="transition-all duration-500"
+            style={{ animationDelay: "1.6s" }}
+          />
+          <text 
+            x="70" 
+            y="48" 
+            textAnchor="middle" 
+            fill="white" 
+            fontSize="14" 
+            fontWeight="bold"
+          >
+            📊
+          </text>
+
+          {/* Trading Actions */}
+          {[
+            { label: "Buy/Sell", color: "#7F5AF0", y: 80 },
+            { label: "Track Value", color: "#2CB67D", y: 105 }
+          ].map((action, i) => (
+            <g key={action.label}>
+              <rect 
+                x="20" 
+                y={action.y} 
+                width="100" 
+                height="18" 
+                fill="rgba(255,255,255,0.1)" 
+                rx="3"
+                opacity={isVisible ? "1" : "0"}
+                className="transition-all duration-500"
+                style={{ animationDelay: `${1.8 + i * 0.2}s` }}
               />
-              <rect
-                x="37"
-                y={card.y + 3}
-                width="25"
-                height="3"
-                fill="#FFFFFE"
-                opacity="0.6"
-                className="animate-card-content"
-                style={{ animationDelay: `${Number.parseFloat(card.delay.replace("s", "")) + 0.3}s` }}
-              />
-              <rect
-                x="37"
-                y={card.y + 8}
-                width="20"
-                height="3"
-                fill="#FFFFFE"
-                opacity="0.4"
-                className="animate-card-content"
-                style={{ animationDelay: `${Number.parseFloat(card.delay.replace("s", "")) + 0.4}s` }}
-              />
+              <text 
+                x="70" 
+                y={action.y + 12} 
+                textAnchor="middle" 
+                fill={action.color} 
+                fontSize="10" 
+                fontWeight="600"
+              >
+                {action.label}
+              </text>
             </g>
           ))}
 
-          {/* Home button with pulse */}
-          <circle
-            cx="40"
-            cy="135"
-            r="8"
-            fill="#94A1B2"
-            className="animate-button-pulse"
-            style={{ animationDelay: "2s" }}
+          {/* Earnings Display */}
+          <rect 
+            x="20" 
+            y="135" 
+            width="100" 
+            height="30" 
+            fill="url(#primaryGradient)" 
+            rx="6"
+            opacity={isVisible ? "1" : "0"}
+            className="transition-all duration-500"
+            style={{ animationDelay: "2.2s" }}
           />
-
-          {/* Labels */}
-          <text
-            x="40"
-            y="220"
-            fill="#FFFFFE"
-            fontSize="14"
-            textAnchor="middle"
+          <text 
+            x="70" 
+            y="154" 
+            textAnchor="middle" 
+            fill="white" 
+            fontSize="11" 
             fontWeight="bold"
-            className="animate-label-appear"
-            style={{ animationDelay: "2.5s" }}
           >
-            Browse Assets
-          </text>
-          <text
-            x="40"
-            y="240"
-            fill="#94A1B2"
-            fontSize="12"
-            textAnchor="middle"
-            className="animate-label-appear"
-            style={{ animationDelay: "2.7s" }}
-          >
-            Explore verified properties
+            💰 Earn Rewards
           </text>
         </g>
 
-        {/* Arrow 1 with drawing animation */}
-        <g transform="translate(180, 140)">
-          <path
-            d="M0 5 L60 5 M55 0 L60 5 L55 10"
-            stroke="#94A1B2"
-            strokeWidth="2"
-            fill="none"
-            className="animate-arrow-draw"
-            style={{
-              strokeDasharray: "75",
-              strokeDashoffset: isVisible ? "0" : "75",
-              transition: "stroke-dashoffset 1s ease-in-out 3s",
+        {/* Arrow Marker Definition */}
+        <defs>
+          <marker id="arrowhead" markerWidth="10" markerHeight="7" 
+                  refX="9" refY="3.5" orient="auto">
+            <polygon points="0 0, 10 3.5, 0 7" fill="url(#primaryGradient)" />
+          </marker>
+        </defs>
+
+        {/* Step Labels */}
+        {steps.map((step, i) => (
+          <text
+            key={step.title}
+            x={120 + i * 280}
+            y="380"
+            textAnchor="middle"
+            fill={step.color}
+            fontSize="16"
+            fontWeight="bold"
+            opacity={isVisible ? "1" : "0"}
+            className="transition-all duration-1000"
+            style={{ 
+              animationDelay: `${1.0 + i * 0.4}s`,
+              textShadow: activeStep === i ? `0 0 10px ${step.color}` : 'none'
             }}
-          />
-        </g>
-
-        {/* Step 2: Connect Wallet */}
-        <g transform="translate(280, 50)">
-          {/* Wallet with 3D effect */}
-          <rect
-            width="100"
-            height="60"
-            fill="url(#stepGradient)"
-            rx="8"
-            className="animate-wallet-appear"
-            style={{ animationDelay: "3.5s" }}
-          />
-          <rect
-            x="10"
-            y="10"
-            width="80"
-            height="40"
-            fill="#16161A"
-            rx="4"
-            className="animate-wallet-screen"
-            style={{ animationDelay: "3.8s" }}
-          />
-
-          {/* Wallet details with typewriter effect */}
-          <rect
-            x="15"
-            y="15"
-            width="30"
-            height="8"
-            fill="#7F5AF0"
-            rx="2"
-            className="animate-wallet-detail"
-            style={{ animationDelay: "4s" }}
-          />
-          <rect
-            x="15"
-            y="27"
-            width="70"
-            height="4"
-            fill="#94A1B2"
-            opacity="0.6"
-            className="animate-wallet-detail"
-            style={{ animationDelay: "4.2s" }}
-          />
-          <rect
-            x="15"
-            y="35"
-            width="50"
-            height="4"
-            fill="#94A1B2"
-            opacity="0.4"
-            className="animate-wallet-detail"
-            style={{ animationDelay: "4.4s" }}
-          />
-          <rect
-            x="15"
-            y="43"
-            width="60"
-            height="4"
-            fill="#2CB67D"
-            className="animate-wallet-balance"
-            style={{ animationDelay: "4.6s" }}
-          />
-
-          {/* Connection indicator with success animation */}
-          <circle
-            cx="85"
-            cy="25"
-            r="8"
-            fill="#2CB67D"
-            className="animate-connection-success"
-            style={{ animationDelay: "5s" }}
-          />
-          <path
-            d="M80 25 L83 28 L90 21"
-            stroke="#FFFFFE"
-            strokeWidth="2"
-            fill="none"
-            strokeLinecap="round"
-            className="animate-checkmark"
-            style={{ animationDelay: "5.2s" }}
-          />
-
-          {/* Transaction ripple effect */}
-          <circle
-            cx="50"
-            cy="130"
-            r="15"
-            fill="none"
-            stroke="#7F5AF0"
-            strokeWidth="2"
-            className="animate-transaction-ripple"
-            style={{ animationDelay: "5.5s" }}
-          />
-
-          {/* Labels */}
-          <text
-            x="50"
-            y="220"
-            fill="#FFFFFE"
-            fontSize="14"
-            textAnchor="middle"
-            fontWeight="bold"
-            className="animate-label-appear"
-            style={{ animationDelay: "6s" }}
           >
-            Connect & Invest
+            {step.title}
           </text>
-          <text
-            x="50"
-            y="240"
-            fill="#94A1B2"
-            fontSize="12"
-            textAnchor="middle"
-            className="animate-label-appear"
-            style={{ animationDelay: "6.2s" }}
-          >
-            Secure wallet transaction
-          </text>
-        </g>
-
-        {/* Arrow 2 */}
-        <g transform="translate(430, 140)">
-          <path
-            d="M0 5 L60 5 M55 0 L60 5 L55 10"
-            stroke="#94A1B2"
-            strokeWidth="2"
-            fill="none"
-            className="animate-arrow-draw"
-            style={{
-              strokeDasharray: "75",
-              strokeDashoffset: isVisible ? "0" : "75",
-              transition: "stroke-dashoffset 1s ease-in-out 6.5s",
-            }}
-          />
-        </g>
-
-        {/* Step 3: Governance & Rewards */}
-        <g transform="translate(530, 50)">
-          {/* Governance dashboard */}
-          <rect
-            width="120"
-            height="100"
-            fill="url(#deviceGradient)"
-            rx="8"
-            className="animate-dashboard-appear"
-            style={{ animationDelay: "7s" }}
-          />
-          <rect
-            x="10"
-            y="10"
-            width="100"
-            height="80"
-            fill="#16161A"
-            rx="4"
-            className="animate-dashboard-screen"
-            style={{ animationDelay: "7.3s" }}
-          />
-
-          {/* Voting interface with progress animation */}
-          <rect
-            x="15"
-            y="15"
-            width="90"
-            height="15"
-            fill="#7F5AF0"
-            opacity="0.8"
-            rx="2"
-            className="animate-proposal-appear"
-            style={{ animationDelay: "7.5s" }}
-          />
-          <text
-            x="60"
-            y="25"
-            fill="#FFFFFE"
-            fontSize="8"
-            textAnchor="middle"
-            className="animate-text-appear"
-            style={{ animationDelay: "7.7s" }}
-          >
-            Proposal #1
-          </text>
-
-          {/* Voting bars with animated fill */}
-          <rect
-            x="15"
-            y="35"
-            width="40"
-            height="12"
-            fill="#2CB67D"
-            rx="2"
-            className="animate-vote-bar"
-            style={{ animationDelay: "8s" }}
-          />
-          <text
-            x="35"
-            y="43"
-            fill="#FFFFFE"
-            fontSize="7"
-            textAnchor="middle"
-            className="animate-text-appear"
-            style={{ animationDelay: "8.2s" }}
-          >
-            YES 65%
-          </text>
-
-          <rect
-            x="65"
-            y="35"
-            width="25"
-            height="12"
-            fill="#94A1B2"
-            rx="2"
-            className="animate-vote-bar"
-            style={{ animationDelay: "8.4s" }}
-          />
-          <text
-            x="77.5"
-            y="43"
-            fill="#FFFFFE"
-            fontSize="7"
-            textAnchor="middle"
-            className="animate-text-appear"
-            style={{ animationDelay: "8.6s" }}
-          >
-            NO 35%
-          </text>
-
-          {/* Rewards section */}
-          <rect
-            x="15"
-            y="55"
-            width="90"
-            height="15"
-            fill="#2CB67D"
-            opacity="0.8"
-            rx="2"
-            className="animate-rewards-appear"
-            style={{ animationDelay: "9s" }}
-          />
-          <text
-            x="60"
-            y="65"
-            fill="#FFFFFE"
-            fontSize="8"
-            textAnchor="middle"
-            className="animate-text-appear"
-            style={{ animationDelay: "9.2s" }}
-          >
-            Monthly Rewards
-          </text>
-
-          <rect
-            x="15"
-            y="75"
-            width="90"
-            height="10"
-            fill="#7F5AF0"
-            opacity="0.6"
-            rx="2"
-            className="animate-earnings-bar"
-            style={{ animationDelay: "9.4s" }}
-          />
-          <text
-            x="60"
-            y="82"
-            fill="#FFFFFE"
-            fontSize="7"
-            textAnchor="middle"
-            className="animate-text-appear"
-            style={{ animationDelay: "9.6s" }}
-          >
-            $1,250 Earned
-          </text>
-
-          {/* Floating reward coins */}
-          <g transform="translate(140, 20)">
-            {[
-              { x: 0, y: 0, delay: "10s" },
-              { x: 15, y: 10, delay: "10.2s" },
-              { x: 5, y: 25, delay: "10.4s" },
-            ].map((coin, index) => (
-              <g key={index}>
-                <circle
-                  cx={coin.x}
-                  cy={coin.y}
-                  r="8"
-                  fill={index % 2 === 0 ? "#2CB67D" : "#7F5AF0"}
-                  className="animate-coin-float"
-                  style={{ animationDelay: coin.delay }}
-                />
-                <text
-                  x={coin.x}
-                  y={coin.y + 3}
-                  fill="#FFFFFE"
-                  fontSize="8"
-                  textAnchor="middle"
-                  fontWeight="bold"
-                  className="animate-coin-symbol"
-                  style={{ animationDelay: `${Number.parseFloat(coin.delay.replace("s", "")) + 0.3}s` }}
-                >
-                  $
-                </text>
-              </g>
-            ))}
-          </g>
-
-          {/* Labels */}
-          <text
-            x="60"
-            y="220"
-            fill="#FFFFFE"
-            fontSize="14"
-            textAnchor="middle"
-            fontWeight="bold"
-            className="animate-label-appear"
-            style={{ animationDelay: "11s" }}
-          >
-            Earn & Govern
-          </text>
-          <text
-            x="60"
-            y="240"
-            fill="#94A1B2"
-            fontSize="12"
-            textAnchor="middle"
-            className="animate-label-appear"
-            style={{ animationDelay: "11.2s" }}
-          >
-            Rewards and DAO voting
-          </text>
-        </g>
-
-        {/* Background connecting line with animated dots */}
-        <line
-          x1="90"
-          y1="200"
-          x2="590"
-          y2="200"
-          stroke="#7F5AF0"
-          strokeWidth="1"
-          opacity="0.3"
-          strokeDasharray="5,5"
-          className="animate-connecting-line"
-          style={{
-            strokeDasharray: "500",
-            strokeDashoffset: isVisible ? "0" : "500",
-            transition: "stroke-dashoffset 2s ease-in-out 11.5s",
-          }}
-        />
-
-        {/* Data flow particles along the line */}
-        {[...Array(5)].map((_, i) => (
-          <circle
-            key={i}
-            cx="90"
-            cy="200"
-            r="2"
-            fill="#2CB67D"
-            className="animate-data-particle"
-            style={{ animationDelay: `${12 + i * 0.5}s` }}
-          >
-            <animateMotion dur="3s" repeatCount="indefinite" begin={`${12 + i * 0.5}s`}>
-              <mpath href="#flowPath" />
-            </animateMotion>
-          </circle>
         ))}
 
-        <path id="flowPath" d="M90,200 L590,200" fill="none" stroke="none" />
+        {/* Oracle Integration Indicators */}
+        <g opacity={isVisible ? "0.7" : "0"} className="transition-all duration-1000" style={{ animationDelay: "2.4s" }}>
+          <line x1="380" y1="120" x2="380" y2="80" stroke="#2CB67D" strokeWidth="2" strokeDasharray="4,4">
+            <animate attributeName="stroke-dashoffset" values="0;-8;0" dur="2s" repeatCount="indefinite"/>
+          </line>
+          <text x="400" y="95" fill="#2CB67D" fontSize="11" fontWeight="600">
+            Chainlink Oracles
+          </text>
+          
+          <line x1="380" y1="360" x2="380" y2="400" stroke="#7F5AF0" strokeWidth="2" strokeDasharray="4,4">
+            <animate attributeName="stroke-dashoffset" values="0;-8;0" dur="2s" repeatCount="indefinite" begin="0.5s"/>
+          </line>
+          <text x="400" y="385" fill="#7F5AF0" fontSize="11" fontWeight="600">
+            SPN Compliance
+          </text>
+        </g>
+
+        {/* Floating Particles */}
+        <g opacity={isVisible ? "1" : "0"} className="transition-all duration-2000">
+          {[...Array(12)].map((_, i) => (
+            <circle
+              key={i}
+              cx={100 + (i * 70) % 700}
+              cy={120 + (i % 3) * 80}
+              r={2 + Math.random() * 2}
+              fill={i % 3 === 0 ? "#7F5AF0" : i % 3 === 1 ? "#2CB67D" : "#8B5CF6"}
+              opacity="0.4"
+            >
+              <animate
+                attributeName="cy"
+                values={`${120 + (i % 3) * 80};${100 + (i % 3) * 80};${120 + (i % 3) * 80}`}
+                dur={`${3 + Math.random() * 2}s`}
+                repeatCount="indefinite"
+                begin={`${i * 0.2}s`}
+              />
+              <animate
+                attributeName="opacity"
+                values="0.2;0.6;0.2"
+                dur={`${2 + Math.random()}s`}
+                repeatCount="indefinite"
+                begin={`${i * 0.3}s`}
+              />
+            </circle>
+          ))}
+        </g>
+
+        {/* Title */}
+        <text
+          x="450"
+          y="450"
+          textAnchor="middle"
+          fill="white"
+          fontSize="20"
+          fontWeight="bold"
+          opacity={isVisible ? "1" : "0"}
+          className="transition-all duration-1000"
+          style={{ animationDelay: "2.6s" }}
+        >
+          Simple RWA Investment Journey
+        </text>
+        
+        <text
+          x="450"
+          y="475"
+          textAnchor="middle"
+          fill="rgba(255,255,255,0.7)"
+          fontSize="14"
+          opacity={isVisible ? "1" : "0"}
+          className="transition-all duration-1000"
+          style={{ animationDelay: "2.8s" }}
+        >
+          Browse Assets • Connect Wallet • Trade & Earn
+        </text>
       </svg>
-
-      <style jsx>{`
-        @keyframes device-appear {
-          0% { transform: scale(0) rotate(10deg); opacity: 0; }
-          70% { transform: scale(1.05) rotate(0deg); opacity: 1; }
-          100% { transform: scale(1) rotate(0deg); opacity: 1; }
-        }
-
-        @keyframes screen-glow {
-          0% { opacity: 0; }
-          100% { opacity: 1; }
-        }
-
-        @keyframes card-slide {
-          0% { transform: translateX(-50px); opacity: 0; }
-          100% { transform: translateX(0); opacity: 1; }
-        }
-
-        @keyframes card-content {
-          0% { opacity: 0; transform: scale(0.8); }
-          100% { opacity: 1; transform: scale(1); }
-        }
-
-        @keyframes button-pulse {
-          0%, 100% { transform: scale(1); opacity: 0.7; }
-          50% { transform: scale(1.1); opacity: 1; }
-        }
-
-        @keyframes wallet-appear {
-          0% { transform: scale(0) rotateY(90deg); opacity: 0; }
-          70% { transform: scale(1.05) rotateY(0deg); opacity: 1; }
-          100% { transform: scale(1) rotateY(0deg); opacity: 1; }
-        }
-
-        @keyframes wallet-screen {
-          0% { opacity: 0; transform: scale(0.9); }
-          100% { opacity: 1; transform: scale(1); }
-        }
-
-        @keyframes wallet-detail {
-          0% { transform: scaleX(0); opacity: 0; }
-          100% { transform: scaleX(1); opacity: 1; }
-        }
-
-        @keyframes wallet-balance {
-          0% { transform: scaleX(0); opacity: 0; }
-          100% { transform: scaleX(1); opacity: 1; }
-        }
-
-        @keyframes connection-success {
-          0% { transform: scale(0); opacity: 0; }
-          50% { transform: scale(1.3); opacity: 0.8; }
-          100% { transform: scale(1); opacity: 1; }
-        }
-
-        @keyframes checkmark {
-          0% { stroke-dasharray: 20; stroke-dashoffset: 20; }
-          100% { stroke-dasharray: 20; stroke-dashoffset: 0; }
-        }
-
-        @keyframes transaction-ripple {
-          0% { r: 15; opacity: 0.7; }
-          50% { r: 25; opacity: 0.3; }
-          100% { r: 15; opacity: 0.7; }
-        }
-
-        @keyframes dashboard-appear {
-          0% { transform: scale(0) rotateX(45deg); opacity: 0; }
-          70% { transform: scale(1.05) rotateX(0deg); opacity: 1; }
-          100% { transform: scale(1) rotateX(0deg); opacity: 1; }
-        }
-
-        @keyframes dashboard-screen {
-          0% { opacity: 0; transform: scale(0.95); }
-          100% { opacity: 1; transform: scale(1); }
-        }
-
-        @keyframes proposal-appear {
-          0% { transform: scaleY(0); opacity: 0; }
-          100% { transform: scaleY(1); opacity: 0.8; }
-        }
-
-        @keyframes vote-bar {
-          0% { transform: scaleX(0); }
-          100% { transform: scaleX(1); }
-        }
-
-        @keyframes rewards-appear {
-          0% { transform: scaleY(0); opacity: 0; }
-          100% { transform: scaleY(1); opacity: 0.8; }
-        }
-
-        @keyframes earnings-bar {
-          0% { transform: scaleX(0); }
-          100% { transform: scaleX(1); }
-        }
-
-        @keyframes coin-float {
-          0% { transform: translateY(0) rotate(0deg); opacity: 0; }
-          50% { transform: translateY(-10px) rotate(180deg); opacity: 1; }
-          100% { transform: translateY(0) rotate(360deg); opacity: 1; }
-        }
-
-        @keyframes coin-symbol {
-          0% { opacity: 0; transform: scale(0); }
-          100% { opacity: 1; transform: scale(1); }
-        }
-
-        @keyframes text-appear {
-          0% { opacity: 0; }
-          100% { opacity: 1; }
-        }
-
-        @keyframes label-appear {
-          0% { opacity: 0; transform: translateY(10px); }
-          100% { opacity: 1; transform: translateY(0); }
-        }
-
-        @keyframes data-particle {
-          0%, 100% { opacity: 0; }
-          50% { opacity: 1; }
-        }
-
-        .animate-device-appear {
-          animation: device-appear 1s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-          animation-fill-mode: both;
-        }
-
-        .animate-screen-glow {
-          animation: screen-glow 0.8s ease-out;
-          animation-fill-mode: both;
-        }
-
-        .animate-card-slide {
-          animation: card-slide 0.6s ease-out;
-          animation-fill-mode: both;
-        }
-
-        .animate-card-content {
-          animation: card-content 0.4s ease-out;
-          animation-fill-mode: both;
-        }
-
-        .animate-button-pulse {
-          animation: button-pulse 2s ease-in-out infinite;
-          animation-fill-mode: both;
-        }
-
-        .animate-wallet-appear {
-          animation: wallet-appear 1s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-          animation-fill-mode: both;
-        }
-
-        .animate-wallet-screen {
-          animation: wallet-screen 0.6s ease-out;
-          animation-fill-mode: both;
-        }
-
-        .animate-wallet-detail {
-          animation: wallet-detail 0.5s ease-out;
-          animation-fill-mode: both;
-          transform-origin: left center;
-        }
-
-        .animate-wallet-balance {
-          animation: wallet-balance 0.5s ease-out;
-          animation-fill-mode: both;
-          transform-origin: left center;
-        }
-
-        .animate-connection-success {
-          animation: connection-success 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-          animation-fill-mode: both;
-        }
-
-        .animate-checkmark {
-          animation: checkmark 0.5s ease-out;
-          animation-fill-mode: both;
-        }
-
-        .animate-transaction-ripple {
-          animation: transaction-ripple 2s ease-in-out infinite;
-          animation-fill-mode: both;
-        }
-
-        .animate-dashboard-appear {
-          animation: dashboard-appear 1s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-          animation-fill-mode: both;
-        }
-
-        .animate-dashboard-screen {
-          animation: dashboard-screen 0.6s ease-out;
-          animation-fill-mode: both;
-        }
-
-        .animate-proposal-appear {
-          animation: proposal-appear 0.5s ease-out;
-          animation-fill-mode: both;
-          transform-origin: center top;
-        }
-
-        .animate-vote-bar {
-          animation: vote-bar 0.8s ease-out;
-          animation-fill-mode: both;
-          transform-origin: left center;
-        }
-
-        .animate-rewards-appear {
-          animation: rewards-appear 0.5s ease-out;
-          animation-fill-mode: both;
-          transform-origin: center top;
-        }
-
-        .animate-earnings-bar {
-          animation: earnings-bar 0.8s ease-out;
-          animation-fill-mode: both;
-          transform-origin: left center;
-        }
-
-        .animate-coin-float {
-          animation: coin-float 1.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-          animation-fill-mode: both;
-        }
-
-        .animate-coin-symbol {
-          animation: coin-symbol 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-          animation-fill-mode: both;
-        }
-
-        .animate-text-appear {
-          animation: text-appear 0.3s ease-out;
-          animation-fill-mode: both;
-        }
-
-        .animate-label-appear {
-          animation: label-appear 0.6s ease-out;
-          animation-fill-mode: both;
-        }
-
-        .animate-data-particle {
-          animation: data-particle 3s ease-in-out infinite;
-        }
-
-        .animate-arrow-draw {
-          animation-fill-mode: both;
-        }
-
-        .animate-connecting-line {
-          animation-fill-mode: both;
-        }
-      `}</style>
     </div>
   )
 }

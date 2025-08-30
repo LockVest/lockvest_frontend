@@ -1,9 +1,19 @@
+"use client"
+
+import { useEffect, useState } from "react"
+
 export function SecurityShieldIllustration() {
+  const [isVisible, setIsVisible] = useState(false)
+
+  useEffect(() => {
+    setIsVisible(true)
+  }, [])
+
   return (
     <svg
-      width="300"
-      height="300"
-      viewBox="0 0 300 300"
+      width="400"
+      height="400"
+      viewBox="0 0 400 400"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       className="w-full h-auto"
@@ -11,102 +21,180 @@ export function SecurityShieldIllustration() {
       <defs>
         <linearGradient id="shieldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
           <stop offset="0%" stopColor="#7F5AF0" />
+          <stop offset="50%" stopColor="#8B5CF6" />
           <stop offset="100%" stopColor="#2CB67D" />
         </linearGradient>
+        
+        <linearGradient id="badgeGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stopColor="#2CB67D" />
+          <stop offset="100%" stopColor="#10B981" />
+        </linearGradient>
+        
         <radialGradient id="glowGradient" cx="50%" cy="50%" r="50%">
-          <stop offset="0%" stopColor="#7F5AF0" stopOpacity="0.3" />
+          <stop offset="0%" stopColor="#7F5AF0" stopOpacity="0.4" />
           <stop offset="100%" stopColor="#7F5AF0" stopOpacity="0" />
         </radialGradient>
+        
         <filter id="dropShadow">
-          <feDropShadow dx="0" dy="4" stdDeviation="8" floodColor="#7F5AF0" floodOpacity="0.3" />
+          <feDropShadow dx="0" dy="6" stdDeviation="12" floodColor="#7F5AF0" floodOpacity="0.4" />
+        </filter>
+        
+        <filter id="glow">
+          <feGaussianBlur stdDeviation="3" result="coloredBlur" />
+          <feMerge>
+            <feMergeNode in="coloredBlur" />
+            <feMergeNode in="SourceGraphic" />
+          </feMerge>
         </filter>
       </defs>
 
-      {/* Glow effect */}
-      <circle cx="150" cy="150" r="120" fill="url(#glowGradient)" />
+      {/* Enhanced glow effect */}
+      <circle cx="200" cy="200" r="150" fill="url(#glowGradient)" className={`transition-all duration-1000 ${isVisible ? "opacity-100" : "opacity-0"}`} />
 
-      {/* Main shield */}
+      {/* Main shield with enhanced styling */}
       <path
-        d="M150 40 C120 50, 90 70, 90 110 L90 160 C90 200, 120 230, 150 250 C180 230, 210 200, 210 160 L210 110 C210 70, 180 50, 150 40 Z"
+        d="M200 60 C160 75, 120 100, 120 150 L120 220 C120 270, 160 300, 200 320 C240 300, 280 270, 280 220 L280 150 C280 100, 240 75, 200 60 Z"
         fill="url(#shieldGradient)"
         filter="url(#dropShadow)"
+        className={`transition-all duration-1000 ${isVisible ? "opacity-100" : "opacity-0"}`}
+        style={{ animationDelay: "0.2s" }}
       />
 
       {/* Inner shield details */}
       <path
-        d="M150 60 C130 65, 110 80, 110 110 L110 150 C110 180, 130 200, 150 215 C170 200, 190 180, 190 150 L190 110 C190 80, 170 65, 150 60 Z"
+        d="M200 80 C170 90, 140 110, 140 150 L140 200 C140 240, 170 260, 200 275 C230 260, 260 240, 260 200 L260 150 C260 110, 230 90, 200 80 Z"
         fill="#FFFFFE"
-        opacity="0.9"
+        opacity="0.95"
+        className={`transition-all duration-1000 ${isVisible ? "opacity-95" : "opacity-0"}`}
+        style={{ animationDelay: "0.4s" }}
       />
 
-      {/* Lock icon in center */}
-      <g transform="translate(135, 120)">
-        <rect x="0" y="10" width="30" height="20" fill="#7F5AF0" rx="3" />
+      {/* Enhanced lock icon in center */}
+      <g transform="translate(180, 160)" className={`transition-all duration-1000 ${isVisible ? "opacity-100" : "opacity-0"}`} style={{ animationDelay: "0.6s" }}>
+        <rect x="0" y="15" width="40" height="30" fill="url(#shieldGradient)" rx="4" filter="url(#glow)" />
         <path
-          d="M8 10 L8 6 C8 3, 10 0, 15 0 C20 0, 22 3, 22 6 L22 10"
+          d="M10 15 L10 8 C10 4, 13 0, 20 0 C27 0, 30 4, 30 8 L30 15"
           fill="none"
-          stroke="#7F5AF0"
-          strokeWidth="2"
+          stroke="#FFFFFE"
+          strokeWidth="2.5"
           strokeLinecap="round"
         />
-        <circle cx="15" cy="20" r="3" fill="#FFFFFE" />
-        <rect x="14" y="20" width="2" height="6" fill="#FFFFFE" />
+        <circle cx="20" cy="30" r="4" fill="#FFFFFE" />
+        <rect x="18" y="30" width="4" height="8" fill="#FFFFFE" rx="1" />
       </g>
 
-      {/* Security badges around shield */}
-      <g>
-        {/* Audit badge */}
-        <g transform="translate(60, 80)">
-          <circle cx="0" cy="0" r="20" fill="#2CB67D" />
-          <path d="M-8 -2 L-3 3 L8 -8" stroke="#FFFFFE" strokeWidth="2" fill="none" strokeLinecap="round" />
-          <text x="0" y="35" fill="#94A1B2" fontSize="10" textAnchor="middle">
-            Audited
+              {/* Security badges with enhanced information */}
+        <g className={`transition-all duration-1000 ${isVisible ? "opacity-100" : "opacity-0"}`} style={{ animationDelay: "0.8s" }}>
+          {/* Chainlink Oracle Badge */}
+          <g transform="translate(80, 80)">
+            <circle cx="0" cy="0" r="25" fill="url(#badgeGradient)" filter="url(#glow)" />
+            <path d="M-8 -8 L8 8 M-8 8 L8 -8" stroke="#FFFFFE" strokeWidth="2" fill="none" strokeLinecap="round" />
+            <circle cx="0" cy="0" r="4" fill="#FFFFFE" />
+            <text x="0" y="40" fill="#2CB67D" fontSize="11" fontWeight="bold" textAnchor="middle">
+              Chainlink
+            </text>
+            <text x="0" y="55" fill="#2CB67D" fontSize="9" textAnchor="middle">
+              Oracles
+            </text>
+          </g>
+
+        {/* SPN Compliance Badge */}
+        <g transform="translate(320, 80)">
+          <circle cx="0" cy="0" r="25" fill="url(#badgeGradient)" filter="url(#glow)" />
+          <rect x="-8" y="-8" width="16" height="16" fill="#FFFFFE" rx="2" />
+          <rect x="-6" y="-6" width="12" height="2" fill="#2CB67D" />
+          <rect x="-6" y="-2" width="12" height="2" fill="#2CB67D" />
+          <rect x="-6" y="2" width="12" height="2" fill="#2CB67D" />
+          <text x="0" y="40" fill="#2CB67D" fontSize="11" fontWeight="bold" textAnchor="middle">
+            SPN
+          </text>
+          <text x="0" y="55" fill="#2CB67D" fontSize="9" textAnchor="middle">
+            Compliance
           </text>
         </g>
 
-        {/* KYC badge */}
-        <g transform="translate(240, 80)">
-          <circle cx="0" cy="0" r="20" fill="#7F5AF0" />
-          <circle cx="0" cy="-5" r="5" fill="#FFFFFE" />
+        {/* Insurance Protection Badge */}
+        <g transform="translate(80, 280)">
+          <circle cx="0" cy="0" r="25" fill="url(#badgeGradient)" filter="url(#glow)" />
+          <rect x="-10" y="-10" width="20" height="16" fill="#FFFFFE" rx="2" />
+          <rect x="-8" y="6" width="16" height="4" fill="#FFFFFE" rx="1" />
+          <text x="0" y="40" fill="#2CB67D" fontSize="11" fontWeight="bold" textAnchor="middle">
+            Insurance
+          </text>
+          <text x="0" y="55" fill="#2CB67D" fontSize="9" textAnchor="middle">
+            Protected
+          </text>
+        </g>
+
+        {/* KYC/AML Badge */}
+        <g transform="translate(320, 280)">
+          <circle cx="0" cy="0" r="25" fill="url(#badgeGradient)" filter="url(#glow)" />
+          <circle cx="0" cy="-6" r="6" fill="#FFFFFE" />
           <path d="M-8 8 C-8 3, -4 0, 0 0 C4 0, 8 3, 8 8" fill="#FFFFFE" />
-          <text x="0" y="35" fill="#94A1B2" fontSize="10" textAnchor="middle">
+          <text x="0" y="40" fill="#2CB67D" fontSize="11" fontWeight="bold" textAnchor="middle">
             KYC
           </text>
-        </g>
-
-        {/* Insurance badge */}
-        <g transform="translate(60, 220)">
-          <circle cx="0" cy="0" r="20" fill="#2CB67D" />
-          <rect x="-8" y="-8" width="16" height="12" fill="#FFFFFE" rx="2" />
-          <rect x="-6" y="4" width="12" height="4" fill="#FFFFFE" rx="1" />
-          <text x="0" y="35" fill="#94A1B2" fontSize="10" textAnchor="middle">
-            Insured
-          </text>
-        </g>
-
-        {/* Compliance badge */}
-        <g transform="translate(240, 220)">
-          <circle cx="0" cy="0" r="20" fill="#7F5AF0" />
-          <rect x="-6" y="-8" width="12" height="16" fill="#FFFFFE" rx="1" />
-          <rect x="-4" y="-6" width="8" height="2" fill="#7F5AF0" />
-          <rect x="-4" y="-2" width="8" height="2" fill="#7F5AF0" />
-          <rect x="-4" y="2" width="8" height="2" fill="#7F5AF0" />
-          <text x="0" y="35" fill="#94A1B2" fontSize="10" textAnchor="middle">
-            Compliant
+          <text x="0" y="55" fill="#2CB67D" fontSize="9" textAnchor="middle">
+            Verified
           </text>
         </g>
       </g>
 
-      {/* Animated security rings */}
-      <g opacity="0.4">
-        <circle cx="150" cy="150" r="80" fill="none" stroke="#7F5AF0" strokeWidth="1">
-          <animate attributeName="r" values="80;100;80" dur="3s" repeatCount="indefinite" />
-          <animate attributeName="opacity" values="0.4;0;0.4" dur="3s" repeatCount="indefinite" />
+      {/* Enhanced security rings with better animation */}
+      <g opacity="0.5" className={`transition-all duration-1000 ${isVisible ? "opacity-50" : "opacity-0"}`} style={{ animationDelay: "1.0s" }}>
+        <circle cx="200" cy="200" r="100" fill="none" stroke="#7F5AF0" strokeWidth="1.5">
+          <animate attributeName="r" values="100;130;100" dur="4s" repeatCount="indefinite" />
+          <animate attributeName="opacity" values="0.5;0;0.5" dur="4s" repeatCount="indefinite" />
         </circle>
-        <circle cx="150" cy="150" r="90" fill="none" stroke="#2CB67D" strokeWidth="1">
-          <animate attributeName="r" values="90;110;90" dur="4s" repeatCount="indefinite" />
-          <animate attributeName="opacity" values="0.3;0;0.3" dur="4s" repeatCount="indefinite" />
+        <circle cx="200" cy="200" r="120" fill="none" stroke="#2CB67D" strokeWidth="1.5">
+          <animate attributeName="r" values="120;150;120" dur="5s" repeatCount="indefinite" />
+          <animate attributeName="opacity" values="0.4;0;0.4" dur="5s" repeatCount="indefinite" />
         </circle>
+        <circle cx="200" cy="200" r="140" fill="none" stroke="#8B5CF6" strokeWidth="1.5">
+          <animate attributeName="r" values="140;170;140" dur="6s" repeatCount="indefinite" />
+          <animate attributeName="opacity" values="0.3;0;0.3" dur="6s" repeatCount="indefinite" />
+        </circle>
+      </g>
+
+      {/* Security metrics display */}
+      <g className={`transition-all duration-1000 ${isVisible ? "opacity-100" : "opacity-0"}`} style={{ animationDelay: "1.2s" }}>
+        {/* Security score indicator */}
+        <rect x="150" y="200" width="100" height="45" fill="url(#badgeGradient)" rx="20" opacity="0.9" />
+        <text x="200" y="225" fill="white" fontSize="12" fontWeight="bold" textAnchor="middle">
+          Security Score
+        </text>
+        <text x="200" y="240" fill="white" fontSize="10" textAnchor="middle">
+          99.9%
+        </text>
+      </g>
+
+      {/* Floating security particles */}
+      <g className={`transition-all duration-1000 ${isVisible ? "opacity-100" : "opacity-0"}`}>
+        {[...Array(15)].map((_, i) => (
+          <circle
+            key={i}
+            cx={100 + Math.random() * 200}
+            cy={100 + Math.random() * 200}
+            r={1.5 + Math.random() * 2}
+            fill={i % 4 === 0 ? "#7F5AF0" : i % 4 === 1 ? "#2CB67D" : i % 4 === 2 ? "#8B5CF6" : "#10B981"}
+            opacity="0.7"
+            className="animate-pulse"
+            style={{
+              animationDelay: `${1.5 + Math.random() * 2}s`,
+              animationDuration: `${2 + Math.random() * 2}s`
+            }}
+          />
+        ))}
+      </g>
+
+      {/* Security layers indicator */}
+      <g className={`transition-all duration-1000 ${isVisible ? "opacity-100" : "opacity-0"}`} style={{ animationDelay: "1.4s" }}>
+        <text x="200" y="350" fill="#94A1B2" fontSize="12" textAnchor="middle" fontWeight="500">
+          Multi-Layer Security Architecture
+        </text>
+        <text x="200" y="365" fill="#94A1B2" fontSize="10" textAnchor="middle" opacity="0.8">
+          Chainlink • SPN • KYC • Compliance
+        </text>
       </g>
     </svg>
   )

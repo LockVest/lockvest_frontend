@@ -20,14 +20,7 @@ export function AnimatedHeroIllustration() {
         className="w-full h-auto"
       >
         <defs>
-          <radialGradient id="heroGradient" cx="50%" cy="50%" r="50%">
-            <stop offset="0%" stopColor="#7F5AF0" stopOpacity="0.2" />
-            <stop offset="100%" stopColor="#2CB67D" stopOpacity="0.1" />
-          </radialGradient>
-          <linearGradient id="nodeGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor="#7F5AF0" />
-            <stop offset="100%" stopColor="#2CB67D" />
-          </linearGradient>
+          {/* Filters (kept) */}
           <filter id="glow">
             <feGaussianBlur stdDeviation="3" result="coloredBlur" />
             <feMerge>
@@ -35,310 +28,393 @@ export function AnimatedHeroIllustration() {
               <feMergeNode in="SourceGraphic" />
             </feMerge>
           </filter>
+
+          <filter id="shadow">
+            <feDropShadow dx="0" dy="4" stdDeviation="8" floodColor="#000000" floodOpacity="0.3" />
+          </filter>
         </defs>
 
-        {/* Animated background circle */}
+        {/* Background with solid colors */}
         <circle
           cx="300"
           cy="300"
-          r="280"
-          fill="url(#heroGradient)"
-          className={`transition-all duration-2000 ${isVisible ? "animate-pulse-slow" : "opacity-0"}`}
+          r="300"
+          fill="#7F5AF0"
+          opacity="0.03"
+          className={`transition-all duration-1500 ${isVisible ? "opacity-3" : "opacity-0"}`}
+        />
+        
+        <circle
+          cx="300"
+          cy="300"
+          r="250"
+          fill="#2CB67D"
+          opacity="0.02"
+          className={`transition-all duration-1500 ${isVisible ? "opacity-2" : "opacity-0"}`}
         />
 
-        {/* Nigeria map outline with draw-on animation */}
-        <path
-          d="M200 150 C220 140, 250 145, 280 155 C320 165, 350 180, 380 200 C400 220, 410 250, 405 280 C400 320, 390 350, 370 380 C350 400, 320 410, 290 405 C250 400, 220 390, 200 370 C180 350, 175 320, 180 290 C185 250, 190 200, 200 150 Z"
-          fill="none"
-          stroke="#7F5AF0"
-          strokeWidth="2"
-          opacity="0.6"
-          className="animate-draw-path"
-          style={{
-            strokeDasharray: "1000",
-            strokeDashoffset: isVisible ? "0" : "1000",
-            transition: "stroke-dashoffset 3s ease-in-out 0.5s",
-          }}
-        />
-
-        {/* Blockchain network nodes with staggered animations */}
-        <g filter="url(#glow)">
+        {/* Main Building - Enhanced Real Estate Representation */}
+        <g transform="translate(200, 120)" filter="url(#shadow)">
+          {/* Building base with clean styling */}
+          <rect
+            width="200"
+            height="280"
+            fill="#7F5AF0"
+            rx="12"
+            className={`transition-all duration-1000 ${isVisible ? "opacity-100" : "opacity-0"}`}
+          />
+          
+          {/* Building roof with modern design */}
+          <path
+            d="M0 0 L100 -20 L200 0 L200 20 L0 20 Z"
+            fill="#8B5CF6"
+            opacity="0.8"
+            className={`transition-all duration-1000 ${isVisible ? "opacity-80" : "opacity-0"}`}
+          />
+          
+          {/* Enhanced windows with better spacing and design */}
           {[
-            { cx: 220, cy: 200, delay: "0.2s", r: 8 },
-            { cx: 300, cy: 180, delay: "0.4s", r: 6 },
-            { cx: 360, cy: 220, delay: "0.6s", r: 7 },
-            { cx: 340, cy: 280, delay: "0.8s", r: 8 },
-            { cx: 280, cy: 320, delay: "1.0s", r: 6 },
-            { cx: 230, cy: 300, delay: "1.2s", r: 7 },
-            { cx: 250, cy: 240, delay: "1.4s", r: 9 },
-          ].map((node, index) => (
-            <circle
-              key={index}
-              cx={node.cx}
-              cy={node.cy}
-              r={node.r}
-              fill="url(#nodeGradient)"
-              className="animate-node-pulse"
-              style={{
-                animationDelay: node.delay,
-                transformOrigin: `${node.cx}px ${node.cy}px`,
-              }}
-            />
-          ))}
-
-          {/* Animated connection lines */}
-          <g className="animate-fade-in-delayed">
-            {[
-              { x1: 220, y1: 200, x2: 300, y2: 180, delay: "1.6s" },
-              { x1: 300, y1: 180, x2: 360, y2: 220, delay: "1.8s" },
-              { x1: 360, y1: 220, x2: 340, y2: 280, delay: "2.0s" },
-              { x1: 340, y1: 280, x2: 280, y2: 320, delay: "2.2s" },
-              { x1: 280, y1: 320, x2: 230, y2: 300, delay: "2.4s" },
-              { x1: 230, y1: 300, x2: 220, y2: 200, delay: "2.6s" },
-              { x1: 250, y1: 240, x2: 300, y2: 180, delay: "2.8s" },
-              { x1: 250, y1: 240, x2: 340, y2: 280, delay: "3.0s" },
-            ].map((line, index) => (
-              <line
-                key={index}
-                x1={line.x1}
-                y1={line.y1}
-                x2={line.x2}
-                y2={line.y2}
-                stroke="#7F5AF0"
-                strokeWidth="1"
-                opacity="0.6"
-                className="animate-line-draw"
-                style={{
-                  strokeDasharray: "100",
-                  strokeDashoffset: isVisible ? "0" : "100",
-                  transition: `stroke-dashoffset 0.8s ease-in-out ${line.delay}`,
-                }}
+            { x: 25, y: 40, delay: "0.2s", floor: "1" },
+            { x: 70, y: 40, delay: "0.4s", floor: "1" },
+            { x: 115, y: 40, delay: "0.6s", floor: "1" },
+            { x: 160, y: 40, delay: "0.8s", floor: "1" },
+            { x: 25, y: 100, delay: "1.0s", floor: "2" },
+            { x: 70, y: 100, delay: "1.2s", floor: "2" },
+            { x: 115, y: 100, delay: "1.4s", floor: "2" },
+            { x: 160, y: 100, delay: "1.6s", floor: "2" },
+            { x: 25, y: 160, delay: "1.8s", floor: "3" },
+            { x: 70, y: 160, delay: "2.0s", floor: "3" },
+            { x: 115, y: 160, delay: "2.2s", floor: "3" },
+            { x: 160, y: 160, delay: "2.4s", floor: "3" },
+          ].map((window, index) => (
+            <g key={index}>
+              <rect
+                x={window.x}
+                y={window.y}
+                width="30"
+                height="40"
+                fill="#FFFFFE"
+                opacity="0.9"
+                rx="4"
+                className="animate-pulse"
+                style={{ animationDelay: window.delay }}
               />
-            ))}
+              {/* Window frame */}
+              <rect
+                x={window.x + 2}
+                y={window.y + 2}
+                width="26"
+                height="36"
+                fill="none"
+                stroke="#E2E8F0"
+                strokeWidth="1"
+                rx="3"
+              />
+              {/* Window reflection */}
+              <rect
+                x={window.x + 4}
+                y={window.y + 4}
+                width="8"
+                height="12"
+                fill="#F1F5F9"
+                opacity="0.6"
+                rx="2"
+              />
+            </g>
+          ))}
+          
+          {/* Enhanced building entrance with details */}
+          <rect
+            x="80"
+            y="220"
+            width="40"
+            height="60"
+            fill="#1E293B"
+            rx="6"
+            className={`transition-all duration-500 ${isVisible ? "opacity-100" : "opacity-0"}`}
+            style={{ animationDelay: "2.6s" }}
+          />
+          {/* Entrance door */}
+          <rect
+            x="85"
+            y="225"
+            width="30"
+            height="50"
+            fill="#475569"
+            rx="3"
+            className={`transition-all duration-500 ${isVisible ? "opacity-100" : "opacity-0"}`}
+            style={{ animationDelay: "2.8s" }}
+          />
+          {/* Door handle */}
+          <circle
+            cx="110"
+            cy="250"
+            r="3"
+            fill="#E2E8F0"
+            className={`transition-all duration-500 ${isVisible ? "opacity-100" : "opacity-0"}`}
+            style={{ animationDelay: "3.0s" }}
+          />
+        </g>
+
+        {/* Enhanced Token Symbols with Better Information */}
+        <g filter="url(#glow)">
+          {/* ERC-20 Token - Fractional Shares */}
+          <g className={`transition-all duration-800 ${isVisible ? "opacity-100" : "opacity-0"}`} style={{ animationDelay: "0.5s" }}>
+            <circle cx="120" cy="120" r="30" fill="#2CB67D" />
+            <text
+              x="120"
+              y="118"
+              textAnchor="middle"
+              fill="white"
+              fontSize="14"
+              fontWeight="bold"
+            >
+              ERC20
+            </text>
+            <text
+              x="120"
+              y="135"
+              textAnchor="middle"
+              fill="white"
+              fontSize="10"
+              opacity="0.8"
+            >
+              Shares
+            </text>
+          </g>
+
+          {/* ERC-721 NFT Token - Property Titles */}
+          <g className={`transition-all duration-800 ${isVisible ? "opacity-100" : "opacity-0"}`} style={{ animationDelay: "0.8s" }}>
+            <circle cx="480" cy="120" r="30" fill="#7F5AF0" />
+            <text
+              x="480"
+              y="118"
+              textAnchor="middle"
+              fill="white"
+              fontSize="14"
+              fontWeight="bold"
+            >
+              ERC721
+            </text>
+            <text
+              x="480"
+              y="135"
+              textAnchor="middle"
+              fill="white"
+              fontSize="10"
+              opacity="0.8"
+            >
+              Titles
+            </text>
+          </g>
+
+          {/* LVT Utility Token - Governance */}
+          <g className={`transition-all duration-800 ${isVisible ? "opacity-100" : "opacity-0"}`} style={{ animationDelay: "1.1s" }}>
+            <circle cx="120" cy="480" r="30" fill="#8B5CF6" />
+            <text
+              x="120"
+              y="478"
+              textAnchor="middle"
+              fill="white"
+              fontSize="14"
+              fontWeight="bold"
+            >
+              LVT
+            </text>
+            <text
+              x="120"
+              y="495"
+              textAnchor="middle"
+              fill="white"
+              fontSize="10"
+              opacity="0.8"
+            >
+              Governance
+            </text>
+          </g>
+
+          {/* New: Commodity Token */}
+          <g className={`transition-all duration-800 ${isVisible ? "opacity-100" : "opacity-0"}`} style={{ animationDelay: "1.3s" }}>
+            <circle cx="480" cy="480" r="30" fill="#10B981" />
+            <text
+              x="480"
+              y="478"
+              textAnchor="middle"
+              fill="white"
+              fontSize="14"
+              fontWeight="bold"
+            >
+              COMM
+            </text>
+            <text
+              x="480"
+              y="495"
+              textAnchor="middle"
+              fill="white"
+              fontSize="10"
+              opacity="0.8"
+            >
+              Commodities
+            </text>
           </g>
         </g>
 
-        {/* Property token pins with bounce animation */}
-        <g>
-          {[
-            { x: 240, y: 190, delay: "3.2s" },
-            { x: 320, y: 250, delay: "3.4s" },
-            { x: 270, y: 300, delay: "3.6s" },
-          ].map((pin, index) => (
-            <g
-              key={index}
-              transform={`translate(${pin.x}, ${pin.y})`}
-              className="animate-bounce-in"
-              style={{ animationDelay: pin.delay }}
-            >
-              <path
-                d="M0 20 L-8 8 C-8 3, -4 0, 0 0 C4 0, 8 3, 8 8 L0 20 Z"
-                fill="#2CB67D"
-                className="animate-pin-wiggle"
-              />
-              <circle cx="0" cy="8" r="4" fill="#FFFFFE" />
-              <rect x="-2" y="6" width="4" height="4" fill="#2CB67D" rx="1" className="animate-property-glow" />
-            </g>
-          ))}
-        </g>
+        {/* Enhanced Blockchain Network with Better Visual Flow */}
+        <g className={`transition-all duration-1000 ${isVisible ? "opacity-100" : "opacity-0"}`}>
+          {/* Connection lines with better styling */}
+          <line x1="300" y1="200" x2="150" y2="120" stroke="#7F5AF0" strokeWidth="3" opacity="0.7" className="animate-pulse" style={{ animationDelay: "1.5s" }} />
+          <line x1="300" y1="200" x2="450" y2="120" stroke="#2CB67D" strokeWidth="3" opacity="0.7" className="animate-pulse" style={{ animationDelay: "1.7s" }} />
+          <line x1="300" y1="200" x2="150" y2="480" stroke="#8B5CF6" strokeWidth="3" opacity="0.7" className="animate-pulse" style={{ animationDelay: "1.9s" }} />
+          <line x1="300" y1="200" x2="450" y2="480" stroke="#10B981" strokeWidth="3" opacity="0.7" className="animate-pulse" style={{ animationDelay: "2.1s" }} />
 
-        {/* Floating blockchain blocks with rotation */}
-        <g opacity="0.7">
+          {/* Enhanced blockchain blocks with better design */}
           {[
-            { x: 150, y: 120, rotation: 15, delay: "4.0s" },
-            { x: 420, y: 160, rotation: -10, delay: "4.2s" },
-            { x: 380, y: 380, rotation: 20, delay: "4.4s" },
+            { x: 80, y: 300, delay: "2.3s", label: "Block" },
+            { x: 520, y: 300, delay: "2.5s", label: "Chain" },
+            { x: 300, y: 450, delay: "2.7s", label: "Node" },
           ].map((block, index) => (
-            <g
-              key={index}
-              transform={`translate(${block.x}, ${block.y}) rotate(${block.rotation})`}
-              className="animate-float-rotate"
-              style={{ animationDelay: block.delay }}
-            >
-              <rect
-                width={30 - index * 2}
-                height={30 - index * 2}
-                fill={index % 2 === 0 ? "#7F5AF0" : "#2CB67D"}
-                rx="4"
-              />
-              <rect x="5" y="5" width={20 - index * 2} height="4" fill="#FFFFFE" opacity="0.8" />
-              <rect x="5" y="12" width={15 - index} height="4" fill="#FFFFFE" opacity="0.6" />
-              <rect x="5" y="19" width={18 - index} height="4" fill="#FFFFFE" opacity="0.4" />
+            <g key={index}>
+              <rect x={block.x - 25} y={block.y - 20} width="50" height="40" fill="#7F5AF0" rx="6" className="animate-pulse" style={{ animationDelay: block.delay }} />
+              <text
+                x={block.x}
+                y={block.y + 5}
+                textAnchor="middle"
+                fill="white"
+                fontSize="12"
+                fontWeight="bold"
+              >
+                {block.label}
+              </text>
             </g>
           ))}
         </g>
 
-        {/* Multi-layered animated pulse rings */}
-        <g opacity="0.3">
-          <circle
-            cx="250"
-            cy="240"
-            r="40"
-            fill="none"
-            stroke="#7F5AF0"
-            strokeWidth="1"
-            className="animate-pulse-ring-1"
-          />
-          <circle
-            cx="320"
-            cy="250"
-            r="35"
-            fill="none"
+        {/* Enhanced Marketplace with Better Information Architecture */}
+        <g className={`transition-all duration-1000 ${isVisible ? "opacity-100" : "opacity-0"}`}>
+          {/* Marketplace platform representation */}
+          <rect x="180" y="60" width="240" height="40" fill="#2CB67D" rx="20" opacity="0.9" className="animate-pulse" style={{ animationDelay: "3.0s" }} />
+          <text
+            x="300"
+            y="85"
+            textAnchor="middle"
+            fill="white"
+            fontSize="16"
+            fontWeight="bold"
+          >
+            RWA Marketplace
+          </text>
+
+          {/* Connection nodes with better positioning */}
+          {[
+            { cx: 200, cy: 80, delay: "3.2s", label: "List" },
+            { cx: 400, cy: 80, delay: "3.4s", label: "Trade" },
+            { cx: 200, cy: 520, delay: "3.6s", label: "Invest" },
+            { cx: 400, cy: 520, delay: "3.8s", label: "Earn" },
+          ].map((node, index) => (
+            <g key={index}>
+              <circle
+                cx={node.cx}
+                cy={node.cy}
+                r="10"
+                fill="#2CB67D"
+                className="animate-pulse"
+                style={{ animationDelay: node.delay }}
+              />
+              <text
+                x={node.cx}
+                y={node.cy + 20}
+                textAnchor="middle"
+                fill="#2CB67D"
+                fontSize="10"
+                fontWeight="600"
+              >
+                {node.label}
+              </text>
+            </g>
+          ))}
+
+          {/* Enhanced marketplace grid with better visual hierarchy */}
+          <line
+            x1="200"
+            y1="80"
+            x2="400"
+            y2="80"
             stroke="#2CB67D"
-            strokeWidth="1"
-            className="animate-pulse-ring-2"
+            strokeWidth="2"
+            opacity="0.6"
+            className="animate-pulse"
+            style={{ animationDelay: "4.0s" }}
           />
-          <circle
-            cx="280"
-            cy="280"
-            r="30"
-            fill="none"
-            stroke="#7F5AF0"
-            strokeWidth="1"
-            className="animate-pulse-ring-3"
+          <line
+            x1="200"
+            y1="520"
+            x2="400"
+            y2="520"
+            stroke="#2CB67D"
+            strokeWidth="2"
+            opacity="0.6"
+            className="animate-pulse"
+            style={{ animationDelay: "4.2s" }}
+          />
+          <line
+            x1="200"
+            y1="80"
+            x2="200"
+            y2="520"
+            stroke="#2CB67D"
+            strokeWidth="2"
+            opacity="0.4"
+            className="animate-pulse"
+            style={{ animationDelay: "4.4s" }}
+          />
+          <line
+            x1="400"
+            y1="80"
+            x2="400"
+            y2="520"
+            stroke="#2CB67D"
+            strokeWidth="2"
+            opacity="0.4"
+            className="animate-pulse"
+            style={{ animationDelay: "4.6s" }}
           />
         </g>
 
-        {/* Data flow particles */}
-        <g className="animate-fade-in" style={{ animationDelay: "5s" }}>
-          {[...Array(8)].map((_, i) => (
+        {/* Enhanced floating particles with better distribution */}
+        <g className={`transition-all duration-1000 ${isVisible ? "opacity-100" : "opacity-0"}`}>
+          {[...Array(20)].map((_, i) => (
             <circle
               key={i}
-              cx="250"
-              cy="240"
-              r="2"
-              fill="#2CB67D"
-              className="animate-particle-flow"
+              cx={80 + Math.random() * 440}
+              cy={80 + Math.random() * 440}
+              r={1.5 + Math.random() * 2}
+              fill={i % 3 === 0 ? "#7F5AF0" : i % 3 === 1 ? "#2CB67D" : "#8B5CF6"}
+              opacity="0.7"
+              className="animate-pulse"
               style={{
-                animationDelay: `${5 + i * 0.3}s`,
-                transformOrigin: "250px 240px",
+                animationDelay: `${4.0 + Math.random() * 2}s`,
+                animationDuration: `${2 + Math.random() * 2}s`
               }}
             />
           ))}
         </g>
+
+        {/* New: Performance indicators */}
+        <g className={`transition-all duration-1000 ${isVisible ? "opacity-100" : "opacity-0"}`} style={{ animationDelay: "4.8s" }}>
+          {/* 50K TPS indicator */}
+          <rect x="250" y="300" width="100" height="30" fill="#2CB67D" rx="15" opacity="0.8" />
+          <text
+            x="300"
+            y="320"
+            textAnchor="middle"
+            fill="white"
+            fontSize="12"
+            fontWeight="bold"
+          >
+            50K TPS
+          </text>
+        </g>
       </svg>
-
-      <style jsx>{`
-        @keyframes pulse-slow {
-          0%, 100% { opacity: 0.3; transform: scale(1); }
-          50% { opacity: 0.6; transform: scale(1.02); }
-        }
-
-        @keyframes node-pulse {
-          0%, 100% { transform: scale(1); opacity: 1; }
-          50% { transform: scale(1.2); opacity: 0.8; }
-        }
-
-        @keyframes bounce-in {
-          0% { transform: translateY(-50px) scale(0); opacity: 0; }
-          60% { transform: translateY(0) scale(1.1); opacity: 1; }
-          100% { transform: translateY(0) scale(1); opacity: 1; }
-        }
-
-        @keyframes pin-wiggle {
-          0%, 100% { transform: rotate(0deg); }
-          25% { transform: rotate(-2deg); }
-          75% { transform: rotate(2deg); }
-        }
-
-        @keyframes property-glow {
-          0%, 100% { box-shadow: 0 0 5px #2CB67D; }
-          50% { box-shadow: 0 0 15px #2CB67D, 0 0 25px #2CB67D; }
-        }
-
-        @keyframes float-rotate {
-          0% { transform: translateY(0) rotate(0deg); }
-          33% { transform: translateY(-10px) rotate(120deg); }
-          66% { transform: translateY(5px) rotate(240deg); }
-          100% { transform: translateY(0) rotate(360deg); }
-        }
-
-        @keyframes pulse-ring-1 {
-          0% { r: 40; opacity: 0.3; }
-          50% { r: 60; opacity: 0.1; }
-          100% { r: 40; opacity: 0.3; }
-        }
-
-        @keyframes pulse-ring-2 {
-          0% { r: 35; opacity: 0.3; }
-          50% { r: 55; opacity: 0.1; }
-          100% { r: 35; opacity: 0.3; }
-        }
-
-        @keyframes pulse-ring-3 {
-          0% { r: 30; opacity: 0.3; }
-          50% { r: 50; opacity: 0.1; }
-          100% { r: 30; opacity: 0.3; }
-        }
-
-        @keyframes particle-flow {
-          0% { transform: rotate(0deg) translateX(0px) rotate(0deg); opacity: 0; }
-          10% { opacity: 1; }
-          90% { opacity: 1; }
-          100% { transform: rotate(360deg) translateX(80px) rotate(-360deg); opacity: 0; }
-        }
-
-        @keyframes fade-in-delayed {
-          0% { opacity: 0; }
-          100% { opacity: 0.6; }
-        }
-
-        .animate-pulse-slow {
-          animation: pulse-slow 4s ease-in-out infinite;
-        }
-
-        .animate-node-pulse {
-          animation: node-pulse 2s ease-in-out infinite;
-        }
-
-        .animate-bounce-in {
-          animation: bounce-in 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-          animation-fill-mode: both;
-        }
-
-        .animate-pin-wiggle {
-          animation: pin-wiggle 3s ease-in-out infinite;
-        }
-
-        .animate-property-glow {
-          animation: property-glow 2s ease-in-out infinite;
-        }
-
-        .animate-float-rotate {
-          animation: float-rotate 8s ease-in-out infinite;
-          animation-fill-mode: both;
-        }
-
-        .animate-pulse-ring-1 {
-          animation: pulse-ring-1 3s ease-in-out infinite;
-        }
-
-        .animate-pulse-ring-2 {
-          animation: pulse-ring-2 4s ease-in-out infinite;
-        }
-
-        .animate-pulse-ring-3 {
-          animation: pulse-ring-3 5s ease-in-out infinite;
-        }
-
-        .animate-particle-flow {
-          animation: particle-flow 4s linear infinite;
-        }
-
-        .animate-fade-in {
-          animation: fade-in-delayed 1s ease-in-out;
-          animation-fill-mode: both;
-        }
-
-        .animate-fade-in-delayed {
-          animation: fade-in-delayed 2s ease-in-out;
-          animation-fill-mode: both;
-        }
-
-        .animate-line-draw {
-          animation-fill-mode: both;
-        }
-      `}</style>
     </div>
   )
 }

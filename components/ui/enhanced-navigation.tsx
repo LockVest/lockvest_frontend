@@ -38,7 +38,7 @@ export function EnhancedNavigation() {
   const navItems = [
     { href: "#features", label: "Features" },
     { href: "#how-it-works", label: "How It Works" },
-    { href: "#roadmap", label: "Roadmap" },
+    // { href: "#roadmap", label: "Roadmap" },
   ]
 
   return (
