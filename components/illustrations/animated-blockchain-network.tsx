@@ -102,12 +102,12 @@ export function AnimatedBlockchainNetwork() {
 
         {/* Surrounding nodes with staggered animations */}
         {[
-          { cx: 150, cy: 120, delay: "2s" },
-          { cx: 350, cy: 120, delay: "2.2s" },
-          { cx: 100, cy: 200, delay: "2.4s" },
-          { cx: 400, cy: 200, delay: "2.6s" },
-          { cx: 150, cy: 280, delay: "2.8s" },
-          { cx: 350, cy: 280, delay: "3s" },
+          { cx: 150, cy: 120, delay: "2s", label: "SPN" },
+          { cx: 350, cy: 120, delay: "2.2s", label: "EVM" },
+          { cx: 100, cy: 200, delay: "2.4s", label: "50K" },
+          { cx: 400, cy: 200, delay: "2.6s", label: "TPS" },
+          { cx: 150, cy: 280, delay: "2.8s", label: "ZK" },
+          { cx: 350, cy: 280, delay: "3s", label: "RWA" },
         ].map((node, index) => (
           <g key={index}>
             <circle
@@ -128,6 +128,20 @@ export function AnimatedBlockchainNetwork() {
               className="animate-node-core"
               style={{ animationDelay: `${Number.parseFloat(node.delay.replace("s", "")) + 0.3}s` }}
             />
+            
+            {/* Node labels */}
+            <text
+              x={node.cx}
+              y={node.cy + 4}
+              textAnchor="middle"
+              fill="#7F5AF0"
+              fontSize="8"
+              fontWeight="bold"
+              className="animate-node-core"
+              style={{ animationDelay: `${Number.parseFloat(node.delay.replace("s", "")) + 0.5}s` }}
+            >
+              {node.label}
+            </text>
 
             {/* Data packets flowing from nodes */}
             <circle
@@ -146,22 +160,35 @@ export function AnimatedBlockchainNetwork() {
 
         {/* Outer ring nodes */}
         {[
-          { cx: 80, cy: 100, delay: "3.5s" },
-          { cx: 420, cy: 100, delay: "3.7s" },
-          { cx: 80, cy: 300, delay: "3.9s" },
-          { cx: 420, cy: 300, delay: "4.1s" },
-          { cx: 50, cy: 200, delay: "4.3s" },
-          { cx: 450, cy: 200, delay: "4.5s" },
+          { cx: 80, cy: 100, delay: "3.5s", label: "Block" },
+          { cx: 420, cy: 100, delay: "3.7s", label: "Chain" },
+          { cx: 80, cy: 300, delay: "3.9s", label: "Node" },
+          { cx: 420, cy: 300, delay: "4.1s", label: "Data" },
+          { cx: 50, cy: 200, delay: "4.3s", label: "Fast" },
+          { cx: 450, cy: 200, delay: "4.5s", label: "Secure" },
         ].map((node, index) => (
-          <circle
-            key={index}
-            cx={node.cx}
-            cy={node.cy}
-            r="12"
-            fill="#2CB67D"
-            className="animate-outer-node"
-            style={{ animationDelay: node.delay }}
-          />
+          <g key={index}>
+            <circle
+              cx={node.cx}
+              cy={node.cy}
+              r="12"
+              fill="#2CB67D"
+              className="animate-outer-node"
+              style={{ animationDelay: node.delay }}
+            />
+            <text
+              x={node.cx}
+              y={node.cy + 3}
+              textAnchor="middle"
+              fill="white"
+              fontSize="6"
+              fontWeight="bold"
+              className="animate-outer-node"
+              style={{ animationDelay: `${Number.parseFloat(node.delay.replace("s", "")) + 0.2}s` }}
+            >
+              {node.label}
+            </text>
+          </g>
         ))}
 
         {/* Connection lines with data flow animation */}
@@ -268,7 +295,7 @@ export function AnimatedBlockchainNetwork() {
           className="animate-label-appear"
           style={{ animationDelay: "9s" }}
         >
-          Decentralized Network
+          Pharos Blockchain Network
         </text>
         <text
           x="250"
@@ -279,7 +306,7 @@ export function AnimatedBlockchainNetwork() {
           className="animate-label-appear"
           style={{ animationDelay: "9.5s" }}
         >
-          Secure • Transparent • Global
+          50K TPS • EVM Compatible • SPN Powered
         </text>
       </svg>
 

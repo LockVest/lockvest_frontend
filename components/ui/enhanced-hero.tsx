@@ -24,6 +24,7 @@ export function EnhancedHero() {
         { value: "$300T", label: "Global Market" },
         { value: "90%", label: "Untapped" },
         { value: "2nd", label: "Crypto Adoption" },
+        { value: "50K", label: "TPS Performance" },
     ]
 
     return (
@@ -148,7 +149,7 @@ export function EnhancedHero() {
                             className="bg-[#7F5AF0] hover:bg-[#7F5AF0]/80 text-white px-8 group rounded-lg flex items-center justify-center py-3"
                             onClick={handleExploreClick}
                         >
-                            <span>Explore Marketplace</span>
+                            <span>Explore RWA Marketplace</span>
                             <motion.div
                                 className="ml-2"
                                 initial={{ x: 0 }}
@@ -165,7 +166,7 @@ export function EnhancedHero() {
                             className="border-[#2CB67D] text-[#2CB67D] hover:bg-[#2CB67D] hover:text-white px-8 bg-transparent group rounded-lg flex items-center justify-center py-3"
                         >
                             <Play className="w-5 h-5 mr-2" />
-                            <span>Watch Demo</span>
+                            <span>View Demo</span>
                         </MotionButton>
                     </motion.div>
 
@@ -179,6 +180,14 @@ export function EnhancedHero() {
                         <div className="flex items-center space-x-2">
                             <div className="w-2 h-2 bg-[#2CB67D] rounded-full animate-pulse" />
                             <span>Regulation Ready</span>
+                        </div>
+                        <div className="flex items-center space-x-2">
+                            <div className="w-2 h-2 bg-[#7F5AF0] rounded-full animate-pulse" />
+                            <span>Decentralized</span>
+                        </div>
+                        <div className="flex items-center space-x-2">
+                            <div className="w-2 h-2 bg-[#FFFFFE] rounded-full animate-pulse" />
+                            <span>Secure</span>
                         </div>
                     </motion.div>
                 </motion.div>
