@@ -71,7 +71,7 @@ export function EnhancedHero() {
                 >
                     {/* Badge */}
                     <motion.div
-                        className="inline-flex items-center px-4 py-2 bg-[#7F5AF0]/10 border border-[#7F5AF0]/20 rounded-full text-sm text-[#7F5AF0]"
+                        className="inline-flex items-center px-4 py-2 bg-[#7F5AF0]/10 border border-[#7F5AF0]/20 rounded-full text-sm text-[#7F5AF0] md:mt-0 mt-4"
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.4 }}
